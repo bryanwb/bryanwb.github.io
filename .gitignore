@@ -3,6 +3,11 @@
 node_modules
 yarn-error.log
 
+# learning docs that I don't possess the copyright for
+/learning/docs
+
+
 # Build directory
 /public
 .DS_Store
+
