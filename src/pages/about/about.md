@@ -9,6 +9,8 @@ I am a professional software engineer currently living in Bangkok, Thailand with
 my wife and two children. I am American by birth but by strange accident have
 lived the last 17 years in Tel Aviv, Hong Kong, Kathmandu, Rome, and now Bangkok.
 
+I am grew up in lovely [Whittier, CA](https://en.wikipedia.org/wiki/Whittier,_California) but moved at age 18. I often think that leaving was mistake. Whittier is a beautiful and special place.
+
 I am fascinated by the nexus of finance and technology, particularly the
 potentially disruptive impact of blockchain technology on our global financial
 system.
@@ -32,6 +34,7 @@ I consume a lot of books, primarily in audio format. I primarily listen to non-f
 
 * [The History of Money](https://www.amazon.com/History-Money-Jack-Weatherford/dp/0609801724) - the best single book on the topic
 * The Ascent of Finance
+* [A Man for All Markets](http://www.edwardothorp.com/books/a-man-for-all-markets/) - Amazing and inspiring life story of mathematician and hedge fund manager Edward O. Thorp who coincidentally grew up near my hometown.
 
 #### Lectures
 

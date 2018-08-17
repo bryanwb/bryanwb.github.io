@@ -32,8 +32,8 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
       <Layout data={this.props.data}>
         <div>
           <h1>Welcome to Hot Air</h1>
-          <p>What's Legit and What to Quit in Finance and Technology.</p>
-          <p>A project by Bryan Willson Berry.</p>
+          <p>What's Legit and What to Quit in Finance and Technology</p>
+          <p>A project by Bryan Willson Berry</p>
         </div>
       </Layout>
     )
