@@ -42,7 +42,7 @@ export const pageQuery = graphql`
         siteName
       }
     }
-    allMarkdownRemark {
+    allMarkdownRemark(filter: {frontmatter: {title: {eq: "Watch Me Learn"}}}) {
       edges {
         node {
           frontmatter {

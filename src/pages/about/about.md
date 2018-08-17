@@ -1,12 +1,9 @@
 ---
-title: Who is this guy?
+title: About
 ---
 
 Hi! My name is Bryan Willson Berry and I have a lot of opinions and even more questions. This
 website is my platform to share those opinions and to provoke questions from you, the reader.
-
-
-## About Me
 
 I am a professional software engineer currently living in Bangkok, Thailand with
 my wife and two children. I am American by birth but by strange accident have

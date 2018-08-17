@@ -1,5 +1,5 @@
 ---
-title: Watch Me Lean
+title: Watch Me Learn
 ---
 
 
@@ -8,6 +8,8 @@ title: Watch Me Lean
 This page tracks my educational progress as I endeavor to learn more about Computer Science and Finance.
 
 This page takes no small inspiration from [Teach Yourself CS](https://teachyourselfcs.com/).
+
+I keep notes and solutions for my self-study here
 
 # Computer Science
 
