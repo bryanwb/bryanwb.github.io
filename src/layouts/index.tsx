@@ -16,13 +16,14 @@ const ListLink: React.SFC<ListLinkProps> = (props: any) => (
 
 interface IndexLayoutProps {
   children: any,
-  data: any
+  data: any,
+  location: any
 }
 
-const IndexLayout: React.SFC<IndexLayoutProps> = ({children, data}:{children:any, data:any}) => (
+const IndexLayout: React.SFC<IndexLayoutProps> = ({children, data, location}:{children:any, data:any, location: any}) => (
   <div style={{ margin: `0 auto`, maxWidth: 1000, padding: `1.25rem 1rem` }}>
       <header style={{ marginBottom: `1.5rem` }}>
-          {window.location.pathname !== '/' && 
+          {(location && location.pathname == '/') ||
           <Link to="/" activeStyle={{ textShadow: `none`, backgroundImage: `none` }}>
               <img style={{ display: `inline`, maxWidth: 57.5, maxHeight: 75}} src={balloonImage} alt="Cool balloon image" />
           </Link>
