@@ -34,6 +34,14 @@ with how the material was presented.
 
 note1: I added [Computer Science from the Bottum Up](https://www.bottomupcs.com/) as it is a nice hands-on tutorial writing low-level C programs on Linux.
 
+## Web Development
+
+This is a collection of resources I used to learn web development.
+
+| Resource                                                                                      | Date Finished | Exercise |
+|:---------------------------------------------------------------------------------------------:|:-------------:|:--------:|
+|[React-Apollo client-side Graphql tutorial](https://www.howtographql.com/react-apollo)         |               |          |
+
 
 ## Fun projects/reading
 
