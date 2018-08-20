@@ -9,7 +9,7 @@ I am a professional software engineer currently living in Bangkok, Thailand with
 my wife and two children. I am American by birth but by strange accident have
 lived the last 17 years in Tel Aviv, Hong Kong, Kathmandu, Rome, and now Bangkok.
 
-I am grew up in lovely [Whittier, CA](https://en.wikipedia.org/wiki/Whittier,_California) but moved at age 18. I often think that leaving was mistake. Whittier is a beautiful and special place.
+I am grew up in lovely [Whittier, CA](https://en.wikipedia.org/wiki/Whittier,_California) but moved at age 18. I sometimes think that leaving was a mistake. Whittier is a beautiful and special place.
 
 I am fascinated by the nexus of finance and technology, particularly the
 potentially disruptive impact of blockchain technology on our global financial
