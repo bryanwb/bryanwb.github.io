@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
 import Layout from "../layouts";
 import React from 'react';
-
+import balloonImage from './images/hotairballoon.svg';
 
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema
@@ -16,13 +16,13 @@ interface IndexPageProps {
 }
 
 export const pageQuery = graphql`
-query IndexQuery {
-  site {
-    siteMetadata {
-      siteName
+  query IndexQuery {
+    site {
+      siteMetadata {
+        siteName
+      }
     }
   }
-}
 `
 
 export default class IndexPage extends React.Component<IndexPageProps, {}> {
@@ -30,11 +30,13 @@ export default class IndexPage extends React.Component<IndexPageProps, {}> {
     const { siteName } = this.props.data.site.siteMetadata;
     return (
       <Layout data={this.props.data}>
-        <div>
-          <h1>Welcome to Hot Air</h1>
-          <p>What's Legit and What to Quit in Finance and Technology</p>
-          <p>A project by Bryan Willson Berry</p>
-        </div>
+          <div style={{textAlign: "center", display: "inline-block"}}>
+              <p style={{fontSize: "3rem"}} >Welcome to Hot Air</p>
+              <p style={{fontSize: "2rem"}}>What's Legit and What to Quit in Finance and Technology</p>
+              <p style={{marginTop: "2rem"}}>
+                  <img src={balloonImage} alt="Cool balloon image" />
+              </p>
+          </div>
       </Layout>
     )
   }
