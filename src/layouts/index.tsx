@@ -29,7 +29,6 @@ const IndexLayout: React.SFC<IndexLayoutProps> = ({children, data, location}:{ch
           </Link>
           }
           <ul style={{ listStyle: `none`, float: `right` }}>
-              <ListLink to="/">Home</ListLink>
               <ListLink to="/blog">Blog</ListLink>
               <ListLink to="/podcast">Podcast</ListLink>
               <ListLink to="/learn">Learning</ListLink>        
