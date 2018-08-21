@@ -3,21 +3,8 @@ import Layout from "../../layouts";
 import React from 'react';
 
 
-// to generate all types from graphQL schema
-interface AboutPageProps {
-  data: {
-    allMarkdownRemark: any,
-    site: {
-      siteMetadata: {
-        siteName: string
-      }
-    }
-  }
-}
-
-
-export default class IndexAbout extends React.Component<AboutPageProps, {}> {
-  public render() {
+export default class IndexAbout extends React.Component {
+  render() {
     const { siteName } = this.props.data.site.siteMetadata;
     return (
       <Layout data={this.props.data}>
@@ -36,13 +23,13 @@ export default class IndexAbout extends React.Component<AboutPageProps, {}> {
 
 /*eslint no-undef: "off"*/
 export const pageQuery = graphql`
-  query AboutPageQuery {
+  query LearnPageQuery {
     site {
       siteMetadata {
         siteName
       }
     }
-    allMarkdownRemark(filter: {frontmatter: {title: {eq: "About"}}})  {
+    allMarkdownRemark(filter: {frontmatter: {title: {eq: "Watch Me Learn"}}}) {
       edges {
         node {
           frontmatter {

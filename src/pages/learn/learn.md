@@ -2,10 +2,7 @@
 title: Watch Me Learn
 ---
 
-
-# What is This?
-
-This page tracks my educational progress as I endeavor to learn more about Computer Science and Finance.
+This page tracks my progress as I learn more about Computer Science and Finance.
 
 This page takes no small inspiration from [Teach Yourself CS](https://teachyourselfcs.com/).
 

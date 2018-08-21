@@ -4,7 +4,6 @@ module.exports = {
     description: "What's Legit and What to Quit in Finance and Cryptocurrencies"
   },
   plugins: [
-    'gatsby-plugin-typescript',
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-remark`,
