@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     siteName: 'Hot Air',
+    description: "What's Legit and What to Quit in Finance and Cryptocurrencies"
   },
   plugins: [
     'gatsby-plugin-typescript',
