@@ -46,27 +46,28 @@ const ListLink = props => (
 
 const Header = (props) => (
   <header id="header">
-    <div style={{
-      backgroundImage: `url(${backgroundImage})`, width: "100%",
-      height: "60vh", backgroundSize: "cover"
-    }}>
-      <div className="inner" style={{
-        textAlign: "center", color: "white",
-        textShadow: "3px 3px 50px rgba(13, 11, 11)"
+      <div style={{
+        backgroundImage: `url(${backgroundImage})`, width: "100%",
+        height: "60vh", backgroundSize: "cover"
       }}>
-        <p style={{ fontSize: "5em", paddingTop: "5vh" }}>Welcome to Hot Air</p>
-        <p style={{ fontSize: "3em" }}>What's Legit and What to Quit</p>
-        <p style={{ fontSize: "3em" }}>in the Nexus between Finance and Blockchain</p>
+          <div className="inner" style={{
+            textAlign: "center", color: "white",
+            textShadow: "3px 3px 50px rgba(13, 11, 11)"
+          }}>
+              <p style={{ fontSize: "5em", paddingTop: "5vh" }}>Welcome to Hot Air</p>
+              <p style={{ fontSize: "3em" }}>What's Legit and What to Quit</p>
+              <p style={{ fontSize: "3em" }}>in the Nexus between Finance and Blockchain</p>
+          </div>
       </div>
-    </div>
-    <div style={{ textAlign: "center", bottom: 0 }}>
-      <ul style={{ listStyle: `none`, float: `none`, color: "white", fontSize: "2em", display: `inline-block`, marginRight: `1.5rem` }}>
-        <ListLink to="/blog/">Blog</ListLink>
-        <ListLink to="/podcast/">Podcast</ListLink>
-        <ListLink to="/learn/">Learn</ListLink>
-        <ListLink to="/about/">About</ListLink>
-      </ul>
-    </div>
+      <div style={{ textAlign: "center", bottom: 0 }}>
+          <ul style={{ listStyle: `none`, float: `none`, color: "white", fontSize: "2em", display: `inline-block`, marginRight: `1.5rem` }}>
+              <ListLink to="/">Home</ListLink>
+              <ListLink to="/blog/">Blog</ListLink>
+              <ListLink to="/podcast/">Podcast</ListLink>
+              <ListLink to="/learn/">Learn</ListLink>
+              <ListLink to="/about/">About</ListLink>
+          </ul>
+      </div>
 
   </header>
 );
