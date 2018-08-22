@@ -52,11 +52,12 @@ const Header = (props) => (
       }}>
           <div className="inner" style={{
             textAlign: "center", color: "white",
-            textShadow: "3px 3px 50px rgba(0, 0, 0, 0.7)"
+            textShadow: "3px 3px 50px rgba(0, 0, 0, 0.7)",
+            fontWeight: "bolder"
           }}>
-              <p style={{ fontSize: "5em", paddingTop: "5vh" }}>Welcome to Hot Air</p>
-              <p style={{ fontSize: "3em" }}>What's Legit and What to Quit</p>
-              <p style={{ fontSize: "3em" }}>in Finance and Technology</p>
+              <p style={{ fontSize: "6em", paddingTop: "5vh" }}>Welcome to Hot Air</p>
+              <p style={{ fontSize: "4em" }}>What's Legit and What to Quit</p>
+              <p style={{ fontSize: "4em" }}>in Finance and Technology</p>
           </div>
       </div>
       <div style={{ textAlign: "center", bottom: 0 }}>

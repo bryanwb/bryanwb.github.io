@@ -330,12 +330,6 @@
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.52"
 
-"@babel/plugin-syntax-typescript@7.0.0-beta.52":
-  version "7.0.0-beta.52"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.0.0-beta.52.tgz#9864f409a692d051a76e19828036234325c752f5"
-  dependencies:
-    "@babel/helper-plugin-utils" "7.0.0-beta.52"
-
 "@babel/plugin-transform-arrow-functions@7.0.0-beta.52":
   version "7.0.0-beta.52"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-arrow-functions/-/plugin-transform-arrow-functions-7.0.0-beta.52.tgz#85e7e84ccf065e7292ec60019ecb616b360cbf18"
@@ -558,13 +552,6 @@
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.52"
 
-"@babel/plugin-transform-typescript@7.0.0-beta.52":
-  version "7.0.0-beta.52"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.0.0-beta.52.tgz#8361c4c002040d4e4b5f38416757c0fe4741a1cb"
-  dependencies:
-    "@babel/helper-plugin-utils" "7.0.0-beta.52"
-    "@babel/plugin-syntax-typescript" "7.0.0-beta.52"
-
 "@babel/plugin-transform-unicode-regex@7.0.0-beta.52":
   version "7.0.0-beta.52"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.0.0-beta.52.tgz#9f95e2fd37eac65594da35e90e78262955d86cbb"
@@ -641,13 +628,6 @@
     "@babel/plugin-transform-react-jsx" "7.0.0-beta.52"
     "@babel/plugin-transform-react-jsx-self" "7.0.0-beta.52"
     "@babel/plugin-transform-react-jsx-source" "7.0.0-beta.52"
-
-"@babel/preset-typescript@7.0.0-beta.52":
-  version "7.0.0-beta.52"
-  resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.0.0-beta.52.tgz#34778e100bc69411463d44ffc4d53aea798b9921"
-  dependencies:
-    "@babel/helper-plugin-utils" "7.0.0-beta.52"
-    "@babel/plugin-transform-typescript" "7.0.0-beta.52"
 
 "@babel/runtime@7.0.0-beta.52":
   version "7.0.0-beta.52"
@@ -4004,14 +3984,6 @@ gatsby-plugin-react-helmet@^2.0.11:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-2.0.11.tgz#a2db81755f5b41d54e0e535ca1d9a008d3ccff0a"
   dependencies:
     babel-runtime "^6.26.0"
-
-gatsby-plugin-typescript@^2.0.0-beta.9:
-  version "2.0.0-beta.9"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.0.0-beta.9.tgz#9187e31759f4af458a4dff105d79859e0cc0c080"
-  dependencies:
-    "@babel/preset-typescript" "7.0.0-beta.52"
-    "@babel/runtime" "7.0.0-beta.52"
-    babel-plugin-remove-graphql-queries "^2.0.2-beta.8"
 
 gatsby-plugin-typography@^2.2.0-beta.3:
   version "2.2.0-beta.3"
@@ -8682,9 +8654,9 @@ typography-normalize@^0.14.0:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/typography-normalize/-/typography-normalize-0.14.0.tgz#1d77c1fe2aaf4a51b3673c4c85c85a65a2d4b573"
 
-typography-theme-github@^0.15.10:
-  version "0.15.10"
-  resolved "https://registry.yarnpkg.com/typography-theme-github/-/typography-theme-github-0.15.10.tgz#64ada39722e2e23c820db8a08fcca84f4e704309"
+typography-theme-bootstrap@^0.16.7:
+  version "0.16.7"
+  resolved "https://registry.yarnpkg.com/typography-theme-bootstrap/-/typography-theme-bootstrap-0.16.7.tgz#53681247ae5b2bbad642d1d83fb1951377e47888"
   dependencies:
     gray-percentage "^2.0.0"
 

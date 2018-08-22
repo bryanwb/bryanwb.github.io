@@ -1,6 +1,7 @@
 import Typography from 'typography';
-import themeGithub from 'typography-theme-github';
+import themeBootstrap from 'typography-theme-bootstrap';
 
-const typography = new Typography(themeGithub);
+const typography = new Typography(themeBootstrap);
+
 
 export default typography;
