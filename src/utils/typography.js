@@ -7,7 +7,9 @@ themeBootstrap.googleFonts = [
   {
     name: 'Roboto',
     styles: [
-      '700'
+      '700',
+      '400',
+      '400i'
     ]
   }
 ];
@@ -16,6 +18,5 @@ themeBootstrap.bodyFontFamily = ['Roboto'];
 themeBootstrap.headerFontFamily = ['Roboto'];
 
 const typography = new Typography(themeBootstrap);
-
 
 export default typography;
