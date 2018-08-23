@@ -5,7 +5,29 @@ date: "2018-08-23T11:01:07Z"
 tags: about
 ---
 
-<img src="/headshot.jpg" alt="myface" style="float: right; margin-left: 10px; margin-right: 10px; margin-top: 10px; height: 429px; width: 331px;" />
+<style>
+@media only screen and (min-width: 820px){
+
+  #headshot {
+      height: 429px;
+      width: 331px;
+  }
+
+}
+
+@media only screen and (max-width: 820px){
+
+  #headshot {
+      height: 215px;
+      width: 165px;
+  }
+
+}
+
+
+
+</style>
+<img src="/headshot.jpg" id="headshot" alt="myface" style="float: right; margin-left: 10px; margin-right: 10px; margin-top: 10px;" />
 
 Hi! My name is Bryan Willson Berry and I have a lot of opinions and even more questions. This
 website is my platform to share those opinions and to provoke questions from you, the reader.
@@ -14,7 +36,7 @@ I am a professional software engineer currently living in Bangkok, Thailand with
 my wife and two children. I am American by birth but by a series of accidents have
 lived the last 17 years in Tel Aviv, Hong Kong, Kathmandu, Rome, and now Bangkok. 
 
-I am grew up in lovely [Whittier, CA](https://en.wikipedia.org/wiki/Whittier,_California) but left at age 18 to explore the world. I sometimes think that leaving was a mistake. Whittier is a beautiful and special place.
+I grew up in lovely [Whittier, CA](https://en.wikipedia.org/wiki/Whittier,_California) but left at age 18 to explore the world. I sometimes think that leaving was a mistake. Whittier is a beautiful and special place.
 
 I am fascinated by the nexus of finance and technology, particularly the
 potentially disruptive impact of blockchain technology on our global financial
