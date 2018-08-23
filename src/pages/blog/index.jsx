@@ -1,12 +1,12 @@
 import { graphql } from "gatsby";
 import Link from 'gatsby-link';
+import Layout from "../../layouts";
 import React from 'react';
-import Layout from '../layouts';
 
-export default function Index({data}) {
+export default function Blog({data}) {
   const { edges: posts } = data.allMarkdownRemark;
   return (
-    <Layout>
+    <Layout >
         <div className="blog-posts">
             {posts
               .filter(post => post.node.frontmatter.title.length > 0)
@@ -14,6 +14,11 @@ export default function Index({data}) {
                 return (
                   <div>
                       <h1><Link to={post.frontmatter.path}>{post.frontmatter.title}</Link></h1>
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: post.html,
+                            }}
+                          />
                   </div>
                 );
               })}
@@ -22,13 +27,12 @@ export default function Index({data}) {
   );
 }
 
-
-export const postQuery = graphql`
+export const blogQuery = graphql`
   {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       limit: 1000
-      filter: {frontmatter: {tags: {in: ["blog", "podcast"]}}}
+      filter: {frontmatter: {tags: {in: "blog"}}}
     ) {
       edges {
         node {

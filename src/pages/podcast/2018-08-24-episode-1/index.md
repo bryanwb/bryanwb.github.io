@@ -1,8 +1,12 @@
 ---
-title: Episode 1 - Banking is Fucking insane
+path: "/podcast/banking-is-insane"
+date: "2018-08-24T09:01:17Z"
+title: "Episode 1 - Banking is Fucking insane"
+tags: podcast
+excerpt: "How the banking system works is truly not intuitive"
 ---
 
-Bryan and Miko talk about banking and other stuff
+Bryan and Miko talk about banking makes no sense and how Bitcoin comes into the picture.
 
 ## Show plan
 
@@ -87,8 +91,9 @@ is fucking insane.
 
 1. Fractional Reserve Banking
 2. Bitcoin
-3. Investing in Gold
-4. Tesla
+3. Ethereum
+4. Investing in Gold
+5. Tesla
 
 
 ### Picks

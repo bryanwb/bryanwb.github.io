@@ -1,5 +1,8 @@
 ---
+path: "/about"
 title: About
+date: "2018-08-23T11:01:07Z"
+tags: about
 ---
 
 Hi! My name is Bryan Willson Berry and I have a lot of opinions and even more questions. This

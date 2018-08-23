@@ -1,5 +1,8 @@
 ---
-title: Watch Me Learn
+path: "/learn"
+date: "2018-08-23T11:02:06Z"
+title: "Watch Me Learn"
+tags: learn
 ---
 
 This page tracks my progress as I learn more about Computer Science and Finance.
