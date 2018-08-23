@@ -7,15 +7,23 @@ export default function Index({data}) {
   const { edges: posts } = data.allMarkdownRemark;
   return (
     <Layout>
-        <div className="blog-posts">
+        <div id="blog-post-list" style={{
+          marginLeft: "auto", marginRight: "auto",
+          padding: "1rem 1rem"
+        }}>
             {posts
-              .filter(post => post.node.frontmatter.title.length > 0)
-              .map(({ node: post }) => {
-                return (
-                  <div>
-                      <h1><Link to={post.frontmatter.path}>{post.frontmatter.title}</Link></h1>
-                  </div>
-                );
+            .map(({ node }) => {
+            return (
+            <div>
+                <h3 style={{
+                    marginBottom: "0.25em"
+                    }}>
+                    <Link to={node.frontmatter.path}>{node.frontmatter.title}</Link>
+                </h3>
+                <small><strong>{node.frontmatter.date}</strong></small>
+                <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            </div>
+            );
               })}
         </div>
     </Layout>
@@ -34,9 +42,10 @@ export const postQuery = graphql`
         node {
           html
           id
+          excerpt
           frontmatter {
-            date
             path
+            date(formatString: "DD MMMM, YYYY")
             title
             tags
           }
