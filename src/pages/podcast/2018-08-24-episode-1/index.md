@@ -8,7 +8,7 @@ excerpt: "How the banking system works is truly not intuitive"
 
 Bryan and Miko talk about banking makes no sense and how Bitcoin comes into the picture.
 
-## Show plan
+## Intro
 
 * Why are we here? Why is this show called Hot Air? Where are we?
 * Introduce Miko
@@ -75,7 +75,7 @@ and what would that look like?
 
 How banks make loans in a Bitcoin world?
 
-### Contrarian - What if Trump pulls off MAGA?
+### Contrarian View - What if Trump pulls off MAGA?
 
 What if he succeeds wildly despite his utter lack of competence? What 
 would that look like? What if China suffers some major blows and the dollar gets so strong we can print money to get out of all your debt problems w/out causing
@@ -106,5 +106,5 @@ Bryan
 * [Positive Money series](https://www.youtube.com/user/PositiveMoneyUK)
 
 
-Miko
+Miko?
 
