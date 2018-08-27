@@ -2,17 +2,11 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql } from 'gatsby';
 import Layout from '../layouts';
-import { DiscussionEmbed } from 'disqus-react';
 
-export default function Template({
+export default function PageTemplate({
   data
 }) {
   const post = data.markdownRemark;
-  const disqusShortname = 'hotair-tech';
-  const disqusConfig = {
-    identifier: post.id,
-    title: post.frontmatter.title,
-  };
   return (
     <Layout>
         <div className="blog-post-container">
@@ -24,14 +18,13 @@ export default function Template({
                   dangerouslySetInnerHTML={{ __html: post.html }}
                 />
             </div>
-            <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />        
         </div>
     </Layout>
   );
 }
 
-export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
+export const pageTemplateQuery = graphql`
+  query pagesByPath($path: String!) {
               markdownRemark(frontmatter: {path: {eq: $path } }) {
               html
       frontmatter {

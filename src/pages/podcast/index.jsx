@@ -2,27 +2,35 @@ import { graphql } from "gatsby";
 import Layout from "../../layouts";
 import Link from "gatsby-link";
 import React from 'react';
+import { DiscussionEmbed } from 'disqus-react';
 
 export default function Podcast({ data }) {
   const { edges: posts } = data.allMarkdownRemark;
+  const disqusShortname = 'hotair-tech';
   return (
     <Layout >
-      <div className="podcast-posts">
-        {posts
-          .filter(post => post.node.frontmatter.title.length > 0)
-          .map(({ node: post }) => {
-            return (
-              <div>
-                <h1><Link to={post.frontmatter.path}>{post.frontmatter.title}</Link></h1>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.html,
-                  }}
-                />
-              </div>
-            );
-          })}
-      </div>
+        <div className="podcast-posts">
+            {posts
+              .filter(post => post.node.frontmatter.title.length > 0)
+              .map(({ node: post }) => {
+                let disqusConfig = {
+                  identifier: post.id,
+                  title: post.frontmatter.title,
+                };
+
+                return (
+                  <div>
+                      <h1><Link to={post.frontmatter.path}>{post.frontmatter.title}</Link></h1>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: post.html,
+                        }}
+                      />
+                      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+                  </div>
+                );
+              })}
+        </div>
     </Layout>
   );
 }
