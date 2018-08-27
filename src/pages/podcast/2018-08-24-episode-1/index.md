@@ -12,7 +12,7 @@ Bryan and Miko talk about how banking makes no sense and how Bitcoin might impac
 
 ### Banking myths
 
-Myth number one: Banks lend out depositors' money as loans. <strong>False</strong>
+Myth number one: Banks lend out depositors' money as loans. <strong>False. Banks lend against depositors money. Each new loan actually creates the money that is loaned with an entry in an electronic ledger.</strong>
 
 
 Myth number two: Banks have to keep 10% of each one dollar (Reserve Ratio) of 
