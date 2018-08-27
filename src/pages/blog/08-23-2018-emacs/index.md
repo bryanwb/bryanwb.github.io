@@ -10,9 +10,8 @@ excerpt: "VS Code is a wonderful tool, but after a serious attempt to make it my
 Some months ago I decided to reorient my development career from the DevOps space to web
 development with JavaScript. I at first tried to apply my editor of choice
 ([emacs](https://www.gnu.org/software/emacs/))but was continually frustrated by
-the mediocre support for working JavaScript, particularly compared to
-Python. After wasting at least a day trying to get my Emacs config to support
-JavaScript as well as I had it for Python I came across the blog post [10 Years
+the mediocre support for working with JavaScript, particularly compared to
+Python. After wasting at least a day trying to get my Emacs config to support basic completion and syntax checking in JavaScript I came across the blog post [10 Years
 of love for Emacs Undone by one week of
 VSCode](https://swizec.com/blog/vscode-better-editor-emacs/swizec/7921). The
 title really struck me as I have spent exactly 10 years with Emacs myself. I decided
@@ -26,9 +25,9 @@ in that regard. At the same time, I hit a pretty significant pain point
 instantly. I use emacs keybindings everywhere, in the shell, browser, you name
 it. On OS X, [Karabiner](https://pqrs.org/osx/karabiner/) mapped those bindings
 for me and now on linux laptop with GNOME it is a top-level feature. In VS Code
-I foudnd that I was constantly closing the editor accidentally or deleting a
+I found that I was constantly closing the editor accidentally or deleting a
 text in a buffer with the most common commands that I use thousands of times a
-day. Here are just a few. I probably have ~100 in muscle memory.
+day. Here are just a few. I probably have >100 in muscle memory.
 
 * M-f forward word
 * M-b backward word
@@ -56,7 +55,9 @@ I dropped the emacs plugin and tried to do things the VS Code way. It only kind 
 * Writing documentation in markdown, ReST, asciidoc
 
 While VS Code likely has some support for these, I found the VS Code plugins in these areas lacking
-when I tried them. For example, I found jumping between projects with [Project Manager](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager) very poor in comparison to Emacs' incredible [Projectile](https://github.com/bbatsov/projectile). It is important to note that the Project Manager addon may have improved significantly since I last used it a few months ago. The existing git addons also pale in comparison to Emacs' fantastic [git interface](https://magit.vc/).
+when I tried them. For example, I found jumping between projects with [Project Manager](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager) very poor in comparison to Emacs' incredible [Projectile](https://github.com/bbatsov/projectile). It is important to note that the Project Manager addon may have improved significantly since I last used it a few months ago. The existing git addons also pale in comparison to Emacs' fantastic [git interface](https://magit.vc/). [counsel-git-grep](https://github.com/abo-abo/swiper/blob/master/counsel.el#L1222) across a huge codebase truly is a superpower.
+
+[![Counsel-git-grep demo](http://img.youtube.com/vi/AgRsYOJi6ao/0.jpg)](https://www.youtube.com/watch?v=AgRsYOJi6ao)
 
 I am one of those crazy people that runs a terminal inside of emacs. I even have a keybinding (M-j) that
 I use to toggle between character and line mode in the terminal. VS Code's terminal is OK but nothing to write home about.
