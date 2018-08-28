@@ -99,5 +99,12 @@ VS Code is an excellent IDE and I would recommend any new software developer to 
 
 You can find my emacs configuration for JavaScript [here](https://github.com/bryanwb/dotfiles/blob/master/emacs.d/init.el#L845-L909).
 
+P.S. I haven't figured out a great solutions for the following and would love to hear from you the readers.
 
+* Debugging - I still use VS Code but have looked into [ndb](https://github.com/GoogleChromeLabs/ndb). Don't know yet if it is a worthy replacement.
+* HTML element, css attribute completion - One of my favorite things about VS Code is that it supports completion and inline documentation for CSS and HTML, technologies that I know pathetically little about.
+* Browsing Mozilla, CSS documentation within Emacs - anyone have a good solution for this? iirc helm-dash has something useful here but I haven's seriously investigated it.
+* Auto-completion, linting for Flow - I don't use flow so I have been able to skip this so far but I very much would like to browse and contribute to the desktop application for [Ledger](https://ledger.fr) and it uses Flow extensively.
+
+P.P.S. Thanks so much to [Anantha Kumaran](https://ananthakumaran.in/) for his work on tide-mode w/out which I would be stuck in VS Code.
 
