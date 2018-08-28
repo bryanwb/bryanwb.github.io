@@ -13,9 +13,13 @@ const ListLink = props => (
 
 const Header = (props) => (
   <div>
-      <Helmet>
+      <Helmet
+        link={[
+          { rel: 'shortcut icon', type: 'image/png', href: `favicon.png` }
+        ]}>
           <title>{props.data.site.siteMetadata.siteName}</title>
           <meta name="description" content={props.data.site.siteMetadata.description} />
+
       </Helmet>
       <header id="header">
           <div id="splashImage">
