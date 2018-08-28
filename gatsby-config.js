@@ -29,6 +29,19 @@ module.exports = {
         respectDNT: true,
         exclude: ["/preview/**", "/do-not-track/me/too/"],
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "Hot Air",
+        short_name: "HotAir",
+        start_url: "/",
+        display: "minimal-ui",
+        background_color: "white",
+        theme_color: "white",
+        icon: "static/favicon.png", // This path is relative to the root of the site.
+      },
+    },
+    'gatsby-plugin-offline'
   ],
 };
