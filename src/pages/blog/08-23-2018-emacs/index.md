@@ -57,7 +57,7 @@ I dropped the emacs plugin and tried to do things the VS Code way. It only kind 
 While VS Code likely has some support for these, I found the VS Code plugins in these areas lacking
 when I tried them. For example, I found jumping between projects with [Project Manager](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager) very poor in comparison to Emacs' incredible [Projectile](https://github.com/bbatsov/projectile). It is important to note that the Project Manager addon may have improved significantly since I last used it a few months ago. The existing git addons also pale in comparison to Emacs' fantastic [git interface](https://magit.vc/). [counsel-git-grep](https://github.com/abo-abo/swiper/blob/master/counsel.el#L1222) across a huge codebase truly is a superpower.
 
-[![Counsel-git-grep demo](http://img.youtube.com/vi/AgRsYOJi6ao/0.jpg)](https://www.youtube.com/watch?v=AgRsYOJi6ao)
+[![Counsel-git-grep demo](https://img.youtube.com/vi/AgRsYOJi6ao/0.jpg)](https://www.youtube.com/watch?v=AgRsYOJi6ao)
 
 I am one of those crazy people that runs a terminal inside of emacs. I even have a keybinding (M-j) that
 I use to toggle between character and line mode in the terminal. VS Code's terminal is OK but nothing to write home about.
@@ -66,7 +66,7 @@ I use Emacs [dired](https://www.gnu.org/software/emacs/manual/html_node/emacs/Di
 
 More than magit, projectile, dired, I missed emacs' [ivy](https://oremacs.com/swiper/) completion framework more than anything else. You really have to see it to believe it.
 
-[![Ivy in Action](http://img.youtube.com/vi/VvnJQpTFVDc/0.jpg)](https://youtu.be/VvnJQpTFVDc "Ivy in Action")
+[![Ivy in Action](https://img.youtube.com/vi/VvnJQpTFVDc/0.jpg)](https://youtu.be/VvnJQpTFVDc "Ivy in Action")
 
 So while I could use VS Code for writing JavaScript, I still found myself spending 30-50% of my work time in Emacs. The mismatch between keybindings in VSCode and rest of my tools just kept tying my fingers in knots.
 
@@ -84,7 +84,7 @@ Some of the features tide-mode provides:
 
 Here is tide-mode in action
 
-![tide in action](http://i.imgur.com/jEwgPsd.gif)
+![tide in action](https://i.imgur.com/jEwgPsd.gif)
 
 A few notes on using tide-mode:
 
