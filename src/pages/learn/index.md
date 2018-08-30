@@ -36,10 +36,11 @@ note1: I added [Computer Science from the Bottum Up](https://www.bottomupcs.com/
 
 ## Web Development
 
-This is a collection of resources I used to learn web development.
+This is a collection of resources I have used to learn web development.
 
 | Resource                                                                                      | Date Finished | Exercise |
 |:---------------------------------------------------------------------------------------------:|:-------------:|:--------:|
+|[Reactjs Tic-Tac-Toe tutorial and Main Concepts](https://reactjs.org/docs)                     | 30/08/2018    |          |
 |[React-Apollo client-side Graphql tutorial](https://www.howtographql.com/react-apollo)         |               |          |
 
 

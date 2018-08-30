@@ -108,3 +108,9 @@ P.S. I haven't figured out a great solutions for the following and would love to
 
 P.P.S. Thanks so much to [Anantha Kumaran](https://ananthakumaran.in/) for his work on tide-mode w/out which I would be stuck in VS Code.
 
+Update: below is the magic incantation that I used in my web-mode configuration to get jsx syntax highlighting in regular `.js` files
+
+```lisp
+    (setq web-mode-content-types-alist
+          '(("jsx" . "\\.js[x]?\\'")))
+```

@@ -2,15 +2,25 @@ import { graphql } from "gatsby";
 import Link from 'gatsby-link';
 import React from 'react';
 import Layout from '../layouts';
+import styled from 'react-emotion';
+
+const BlogPostList = styled('div')`
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 1rem;
+  @media (min-width: 820px) {
+    max-width: 50vw;   
+  }
+  @media (max-width: 820px) {
+    max-width: 100vw;
+  }
+`;
 
 export default function Index({data}) {
   const { edges: posts } = data.allMarkdownRemark;
   return (
     <Layout>
-        <div id="blog-post-list" style={{
-          marginLeft: "auto", marginRight: "auto",
-          padding: "1rem 1rem"
-        }}>
+        <BlogPostList>
             {posts
             .map(({ node }) => {
             return (
@@ -25,7 +35,7 @@ export default function Index({data}) {
             </div>
             );
               })}
-        </div>
+        </BlogPostList>
     </Layout>
   );
 }
