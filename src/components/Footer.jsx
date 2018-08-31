@@ -1,5 +1,4 @@
 import React from 'react';
-//import balloonImage from '../pages/images/hotairballoon-small.svg';
 import Link from 'gatsby-link';
 
 const Footer = (props) => (
