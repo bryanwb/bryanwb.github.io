@@ -14,8 +14,9 @@ const Layout = ({ children, data, location }) => (
         paddingTop: 0,
       }}>
         {children}
-        <Footer />
       </div>
+      <Footer />
+
     </div>
   </div>
 

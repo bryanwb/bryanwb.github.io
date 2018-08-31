@@ -41,7 +41,8 @@ This is a collection of resources I have used to learn web development.
 | Resource                                                                                      | Date Finished | Exercise |
 |:---------------------------------------------------------------------------------------------:|:-------------:|:--------:|
 |[Reactjs Tic-Tac-Toe tutorial and Main Concepts](https://reactjs.org/docs)                     | 30/08/2018    |          |
-|[React-Apollo client-side Graphql tutorial](https://www.howtographql.com/react-apollo)         |               |          |
+|[howtographql](https://www.howtographql.com/react-apollo)                                      |               |          |
+|[Get Styling with CSS3](https://sabe.io/classes/css/) there are many CSS tutorials out there. I don't know if this is the best one, but I found it useful | 31/08/2018    |     |
 
 
 ## Fun projects/reading
