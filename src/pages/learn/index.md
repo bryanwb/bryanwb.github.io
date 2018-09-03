@@ -40,7 +40,7 @@ This is a collection of resources I have used to learn web development.
 
 | Resource                                                                                      | Date Finished | Exercise |
 |:---------------------------------------------------------------------------------------------:|:-------------:|:--------:|
-|[Nodeschool - learnyounode](https://github.com/workshopper/learnyounode)                       | 9/30/2018     | [yes][https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nodeschool/learnyounode] |
+|[Nodeschool - learnyounode](https://github.com/workshopper/learnyounode)                       | 9/30/2018     | [yes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nodeschool/learnyounode) |
 |[Get Styling with CSS3](https://sabe.io/classes/css/) there are many CSS tutorials out there. I don't know if this is the best one, but I found it useful | 31/08/2018    |     |
 |[Reactjs Tic-Tac-Toe tutorial and Main Concepts](https://reactjs.org/docs)                     | 30/08/2018    |          |
 |[howtographql](https://www.howtographql.com/react-apollo)                                      |               |          |
