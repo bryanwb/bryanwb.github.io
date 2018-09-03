@@ -1,0 +1,12 @@
+{
+  "name": "bwb-nodeschool",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bl": "^2.0.1",
+    "javascripting": "^2.6.1",
+    "learnyounode": "^3.5.10",
+    "strftime": "^0.10.0"
+  }
+}
