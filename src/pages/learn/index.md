@@ -40,7 +40,12 @@ This is a collection of resources I have used to learn web development.
 
 | Resource                                                                                      | Date Finished | Exercise |
 |:---------------------------------------------------------------------------------------------:|:-------------:|:--------:|
-|[Nodeschool - learnyounode](https://github.com/workshopper/learnyounode)                       | 9/30/2018     | [yes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nodeschool/learnyounode) |
+|[Nodeschool - learnyounode](https://github.com/workshopper/learnyounode)                       | 03/09/2018     | [yes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nodeschool/learnyounode) |
+|[Nodeschool - bytewiser](https://github.com/maxogden/bytewiser)                             | 04/09/2018     | [yes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nodeschool/various/bytewiser-solutions) |
+|[Nodeschool - promise-it-wont-hurt](https://github.com/stevekane/promise-it-wont-hurt)      | 04/09/2018     | [yes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nodeschool/various/promise-solutions) |
+|[Nodeschool - bug-clinic](https://github.com/othiym23/bug-clinic)      | 05/09/2018     | [yes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nodeschool/various/bug-clinic-solutions) |
+|[Nodeschool - es6](https://github.com/yosuke-furukawa/tower-of-babel)      | 05/09/2018     | [yes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nodeschool/various/babel-solutions) |
+|[How HTTP Cookies Work](https://flaviocopes.com/cookies/) simple and useful                  | 06/09/2018 |   |
 |[Get Styling with CSS3](https://sabe.io/classes/css/) there are many CSS tutorials out there. I don't know if this is the best one, but I found it useful | 31/08/2018    |     |
 |[Reactjs Tic-Tac-Toe tutorial and Main Concepts](https://reactjs.org/docs)                     | 30/08/2018    |          |
 |[howtographql](https://www.howtographql.com/react-apollo)                                      |               |          |

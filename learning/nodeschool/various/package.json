@@ -1,0 +1,33 @@
+{
+  "name": "bwb-nodeschool-various",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "adventure": "2.11.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "bug-clinic": "^1.1.6",
+    "bunyan": "^1.8.12",
+    "bytewiser": "^2.1.0",
+    "goingnative": "^2.0.7",
+    "heapdump": "^0.3.9",
+    "jstrace": "^0.3.0",
+    "learnyoumongo": "^3.2.1",
+    "marked": "^0.5.0",
+    "mongoose": "^5.2.14",
+    "promise-it-wont-hurt": "^1.1.3",
+    "q-io": "^1.13.6",
+    "quotemeta": "^0.0.0",
+    "regex-adventure": "^1.1.2",
+    "repl-client": "^0.3.0",
+    "replify": "^1.2.0",
+    "replpad": "^0.14.1",
+    "stackup": "^1.0.2",
+    "tape": "^4.9.1",
+    "tower-of-babel": "^0.9.1",
+    "typescript": "^3.0.3"
+  }
+}
