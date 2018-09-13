@@ -12,13 +12,38 @@ import {
   MouseCoordinateX,
   MouseCoordinateY,
 } from "react-stockcharts/es/lib/coordinates";
-import { OHLCTooltip } from "react-stockcharts/es/lib/tooltip";
+import { HoverTooltip } from "react-stockcharts/es/lib/tooltip";
 
+
+const formatNum = (symbol, num) => {
+  let numFormatted = '$ ' + num.toFixed().toString().replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,");
+  if (symbol.measure) {
+    numFormatted += symbol.measure;
+  }
+  // this magic incantation adds commas in the thousands place
+  return numFormatted
+};
+
+// remove the hours:minutes:seconds
+const formatDate = (date) => {
+  return date.toUTCString().split(/\ \d\d:\d\d:\d\d/)[0];
+};
+
+const tooltipContent = (symbols) => {
+  return (d) => {
+    const {currentItem, xAccessor} = d;
+    const yValues = symbols.map(s => {
+      return {label: s.name + '\n', value: formatNum(s, currentItem[s.name].close), stroke: '#000000'};
+    });
+    return {
+      x: formatDate(xAccessor(currentItem)),
+      y: yValues,
+    };
+  };
+};
 
 class HotAirChart extends React.Component {
   render() {
-    
-    
     const xScaleProvider = discontinuousTimeScaleProvider
       .inputDateAccessor(d => d.date);
     const {
@@ -34,12 +59,24 @@ class HotAirChart extends React.Component {
       xAccessor(data[data.length - dayCount])
     ];
 
+    const symbols = this.props.data.symbols;
+    const calculateYExtents = (d) => {
+      let extents = [];
+      symbols.forEach(s => {
+        let name = s.name;
+         extents.push(d[name].close);
+         d[name].high && extents.push(d[name].high);
+         d[name].low && extents.push(d[name].low);
+       });
+      return extents;
+    };
+
     return (
       <ChartCanvas ratio={1} width={this.props.width} height={this.props.height}
                    margin={{ left: 70, right: 70, top: 20, bottom: 30 }}
                    type={'svg'}
                    pointsPerPxThreshold={1}
-                   seriesName="MSFT"
+                   seriesName="GoldAndBTC"
                    data={data}
                    xAccessor={xAccessor}
                    displayXAccessor={displayXAccessor}
@@ -47,26 +84,45 @@ class HotAirChart extends React.Component {
                    xExtents={xExtents}>
 
           <Chart id={1}
-                 yExtents={d => [d.close]}>
-              <XAxis axisAt="bottom" orient="bottom"/>
+                 yExtents={calculateYExtents}>
+              <XAxis
+                axisAt="bottom"
+                orient="bottom"
+                innerTickSize={-1 * (this.props.height - 20 - 30)}
+                tickStrokeDasharray='Solid'
+                tickStrokeOpacity={0.2}
+                tickStrokeWidth={0.5}
+              />
               <YAxis
                 axisAt="right"
                 orient="right"
                 ticks={5}
+                innerTickSize={-1 * (this.props.width - 70 - 70)}
+                tickStrokeDasharray='Solid'
+                tickStrokeOpacity={0.2}
+                tickStrokeWidth={0.5}
               />
               <MouseCoordinateX
-	      at="bottom"
-	      orient="bottom"
-	      displayFormat={timeFormat("%Y-%m-%d")} />
+	        at="bottom"
+	        orient="bottom"
+	        displayFormat={timeFormat("%Y-%m-%d")} />
 	      <MouseCoordinateY
-	      at="right"
-	      orient="right"
-	      displayFormat={format(".2f")} />              
-              <LineSeries
-                yAccessor={d => d.close}
-                stroke="#ff7f0e"
+	        at="right"
+	        orient="right"
+	        displayFormat={format(".2f")} />
+              {
+                symbols.map(s => {
+                  return <LineSeries
+                           yAccessor={d => d[s.name].close}
+                           stroke={s.color}
+                           strokeWidth={2}
+                  />
+                })
+              }
+              <HoverTooltip 
+                tooltipContent={tooltipContent(symbols)}
+                fontSize={15}
               />
-              <OHLCTooltip forChart={1} origin={[-40, 0]} />
           </Chart>
           <CrossHairCursor />
       </ChartCanvas>

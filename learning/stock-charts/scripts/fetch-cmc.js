@@ -43,25 +43,3 @@ const outputJson = 'src/data/BTC.json';
                  });
   })).catch(console.error);
 })();
-/* const axios = require('axios');
- * 
- * // load the CMC api key into process.env
- * require('dotenv').config();
- * 
- * let config
- * let outJson = process.argv[2];
- * 
- * axios({
- *   url: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/ohlcv/historical',
- *   params: { symbol: 'BTC', convert: 'USD' },
- *   headers: {
- *     'X-CMC_PRO_API_KEY': process.env.CMC_PRO_API_KEY
- *   }
- * }).then(resp => {
- *   return new Promise((resolve, reject) => {
- *     fs.writeFile(outJson, JSON.parse(resp.data), (err) => {
- *       if (err) { reject(err); }
- *       resolve()
- *     });
- *   });
- * }).catch(console.error); */
