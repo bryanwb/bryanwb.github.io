@@ -145,5 +145,5 @@ much weaker than his others. In my opinion, this portion was also a distraction.
 
 ## Summary
 
-I recently read an article in [the Economist](https://www.economist.com/leaders/2018/08/30/bitcoin-and-other-cryptocurrencies-are-useless) that made it clear that mainstream economists are so immersed in the current Fiat money system and grounded in intellectual Keynesianism that they can't see beyond it. Don't make the same mistake,
+I recently read an article in [the Economist](https://www.economist.com/leaders/2018/08/30/bitcoin-and-other-cryptocurrencies-are-useless) that made it clear that mainstream economists just don't get it. Don't make the same mistake,
 read the Bitcoin Standard.
