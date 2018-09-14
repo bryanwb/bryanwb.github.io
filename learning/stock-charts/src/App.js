@@ -4,6 +4,7 @@ import path from 'path';
 import './App.css';
 import DATA from './data/GOLD-BTC.json';
 import Chart from './components/Chart';
+import ChartButtons from './components/ChartButtons';
 
 const ytdDayCount = () => {
   const today = new Date(Date.now());
@@ -43,15 +44,18 @@ const loadSeries = () => {
 class App extends Component {
   render() {
     const width = 1200;
-    const height = 800;
+    const height = 700;
     const data = loadSeries();
     return (
       <div className="App" style={{margin: 'auto', marginTop: "2vh", width: width, height: height}}>
+          <div style={{width: "100%", textAlign: "center"}}><h1>Comparing Bitcoin and Gold</h1></div>
+          <div style={{writingMode: 'vertical-lr', height: "100%", textAlign: "center", float: "right"}}>Price (USD)</div>
           <Chart
             data={data}
             width={width}
             height={height}
             dayCount={ytdDayCount()} />
+          <ChartButtons />
       </div>
     );
   }

@@ -6,6 +6,7 @@ import {Chart, ChartCanvas} from 'react-stockcharts/es';
 import { XAxis, YAxis } from "react-stockcharts/es/lib/axes"
 import { LineSeries } from 'react-stockcharts/es/lib/series';
 import { discontinuousTimeScaleProvider } from "react-stockcharts/es/lib/scale";
+import { Label } from "react-stockcharts/lib/annotation";
 import { last } from "react-stockcharts/es/lib/utils";
 import {
   CrossHairCursor,
@@ -70,10 +71,11 @@ class HotAirChart extends React.Component {
        });
       return extents;
     };
-
+    const margin = { left: 70, right: 70, top: 20, bottom: 30};
+    
     return (
       <ChartCanvas ratio={1} width={this.props.width} height={this.props.height}
-                   margin={{ left: 70, right: 70, top: 20, bottom: 30 }}
+                   margin={margin}
                    type={'svg'}
                    pointsPerPxThreshold={1}
                    seriesName="GoldAndBTC"
@@ -88,16 +90,17 @@ class HotAirChart extends React.Component {
               <XAxis
                 axisAt="bottom"
                 orient="bottom"
-                innerTickSize={-1 * (this.props.height - 20 - 30)}
+                innerTickSize={-1 * (this.props.height - margin.top - margin.bottom)}
                 tickStrokeDasharray='Solid'
                 tickStrokeOpacity={0.2}
                 tickStrokeWidth={0.5}
               />
+
               <YAxis
                 axisAt="right"
                 orient="right"
                 ticks={5}
-                innerTickSize={-1 * (this.props.width - 70 - 70)}
+                innerTickSize={-1 * (this.props.width - margin.left - margin.right)}
                 tickStrokeDasharray='Solid'
                 tickStrokeOpacity={0.2}
                 tickStrokeWidth={0.5}
@@ -113,6 +116,7 @@ class HotAirChart extends React.Component {
               {
                 symbols.map(s => {
                   return <LineSeries
+                           key={s.name}
                            yAccessor={d => d[s.name].close}
                            stroke={s.color}
                            strokeWidth={2}
