@@ -16,7 +16,7 @@ Saifedean spends a lot of time dwelling on what constitutes [sound money](https:
 
 Unsound money, according to Saifedean, is the cause of many and perhaps most of the ills of our modern world. He goes a bit too far here in my opinion but he makes a compelling case that going off the gold standard allowed the countries of Europe to finance wars of scale not seen before the 20th century. Wait, how does that work? Basically, every country that participates in a modern war suspends redemption of their national currency for gold and then proceeds to print as much of their own coinage as needed to pay for the war effort. 
 
-So here is a ridiculous abbreviation of world monetary history
+So here is my ridiculous, mostly wrong abbreviation of world monetary history
 
 1. Scarce commodities are used as the medium of financial exchange - sea shells, glass beads, giant rocks
 2. Gold and silver are used
@@ -50,7 +50,7 @@ expensive and less likely to have been implemented. But back to more important p
 
 <img src='https://fee.org/media/23293/shutterstock_227051371_mini.jpg?anchor=center&mode=crop&width=1920&rnd=131444222820000000' width=414px height=310px style="margin-left: 10px; margin-right: 10px; margin-top: 10px; float: right;"/>
 
-## Lemme tell ya, The Gold Standard was amazing
+## Lemme tell ya, The Gold Standard was awesome
 
 The days of the global Gold Standard was fucking incredible, at least as
 Saifedean describes it. Wars were limited in scope because of governments
@@ -82,7 +82,7 @@ a cyclical recession that turned into a depression when the Federal Reserve fail
 
 <div style="margin-left: 10px; margin-right: 10px; margin-top: 10px; float: right;">
 <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Lord_Keynes.jpg/453px-Lord_Keynes.jpg'  alt="John Maynard Keynes"/>
-<div style="text-align: center;">John Maynard Keynes</div>
+<div style="text-align: center;">John Maynard Keynes, hero or devil?</div>
 </div>
 
 ## We're all Keynesians now, except for the Austrians
