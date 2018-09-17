@@ -64,7 +64,7 @@ I consume a lot of books, primarily in audio format. I primarily listen to non-f
 * [The History of Money](https://www.amazon.com/History-Money-Jack-Weatherford/dp/0609801724) - the best single book on the topic
 * The Ascent of Finance
 * [A Man for All Markets](http://www.edwardothorp.com/books/a-man-for-all-markets/) - Amazing and inspiring life story of mathematician and hedge fund manager Edward O. Thorp who coincidentally grew up near my hometown.
-* [The Bitcoin Standard](https://www.wiley.com/en-us/The+Bitcoin+Standard%3A+The+Decentralized+Alternative+to+Central+Banking-p-9781119473862) I enjoyed it so much I wrote a [book review](https://hotair.tech/blog/bitcoin-standard) of it. It has some very annoying flaws, but is absolutely worth your time.
+* [The Bitcoin Standard](https://www.wiley.com/en-us/The+Bitcoin+Standard%3A+The+Decentralized+Alternative+to+Central+Banking-p-9781119473862) - I enjoyed it so much I wrote a [review](https://hotair.tech/blog/bitcoin-standard) of it. It has some very annoying flaws, but is absolutely worth your time.
 
 #### Lectures
 
