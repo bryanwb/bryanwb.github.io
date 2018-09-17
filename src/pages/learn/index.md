@@ -48,6 +48,7 @@ This is a collection of resources I have used to learn web development.
 |[How HTTP Cookies Work](https://flaviocopes.com/cookies/) simple and useful                  | 06/09/2018 |   |
 |[Get Styling with CSS3](https://sabe.io/classes/css/) there are many CSS tutorials out there. I don't know if this is the best one, but I found it useful | 31/08/2018    |     |
 |[Reactjs Tic-Tac-Toe tutorial and Main Concepts](https://reactjs.org/docs)                     | 30/08/2018    |          |
+|[Learn D3 Video Tutorial](https://scrimba.com/g/gd3js)                                         | 17/09/2018    |          |
 |[howtographql](https://www.howtographql.com/react-apollo)                                      |               |          |
 
 
