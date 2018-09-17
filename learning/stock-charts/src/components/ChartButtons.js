@@ -3,6 +3,7 @@ import styled from 'react-emotion';
 
 const Span = styled('span')`
   color: ${props => props.color};
+  margin-left: 0.4em;
   :hover {
     opacity: 0.4;
     cursor: pointer;
@@ -22,41 +23,24 @@ function Marker(props) {
   );
 }
 
-const toggleColors = (toggle) => {
-  const on = '#537ba2'; // '#6699cc';
+const getToggleColor = (toggle) => {
+  const on = '#6465c6';
   const off = '#727272';
   return toggle ? on : off;
 };
 
 class ChartButtons extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      showMarketCap: false,
-      showBtc: true,
-      showGold: true,
-    };
-  }
-  
-  handleChange(e) {
-    debugger;
-  }
-  
   render() {
-
-    const {showMarketCap, showBtc, showGold} = this.state;
+    const show = this.props.show;
+    const onToggle = this.props.onToggle;
     return (
-      <div style={{display: 'flex',
-                   justifyContent: 'space-around',
-                   marginLeft: '20vw',
-                   marginRight: '20vw'}}>
-          <Marker key="showMarketCap" color={toggleColors(showMarketCap)}
-                  text="Market Cap" onClick={this.handleChange} />
-          <Marker key="showBTC" color={toggleColors(showBtc)}
-                  text="Price (BTC)" onClick={this.handleChange} />
-          <Marker key="showGold" color={toggleColors(showGold)}
-                  text="Price (Gold)" onClick={this.handleChange}  />
+      <div>
+          <Marker key="showMarketCap" color={getToggleColor(show.marketCap)}
+                  text="Market Cap" onClick={(e) => onToggle('marketCap', e)} />
+          <Marker key="showBTC" color={getToggleColor(show.btc)}
+                  text="Price (BTC)" onClick={(e) => onToggle('btc', e)} />
+          <Marker key="showGold" color={getToggleColor(show.gold)}
+                  text="Price (Gold)" onClick={(e) => onToggle('gold', e)}  />
       </div>
     );
 

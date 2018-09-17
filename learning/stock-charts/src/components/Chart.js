@@ -6,7 +6,6 @@ import {Chart, ChartCanvas} from 'react-stockcharts/es';
 import { XAxis, YAxis } from "react-stockcharts/es/lib/axes"
 import { LineSeries } from 'react-stockcharts/es/lib/series';
 import { discontinuousTimeScaleProvider } from "react-stockcharts/es/lib/scale";
-import { Label } from "react-stockcharts/lib/annotation";
 import { last } from "react-stockcharts/es/lib/utils";
 import {
   CrossHairCursor,
@@ -34,8 +33,22 @@ const tooltipContent = (symbols) => {
   return (d) => {
     const {currentItem, xAccessor} = d;
     const yValues = symbols.map(s => {
-      return {label: s.name + '\n', value: formatNum(s, currentItem[s.name].close), stroke: '#000000'};
-    });
+      let items = [
+        {
+          label: s.name + ' ',
+          value: formatNum(s, currentItem[s.name].close),
+          stroke: '#000000'
+        },
+      ];
+      if (currentItem[s.name].cap) {
+        items.push(
+          {label: 'Market Cap',
+           value: '$ ' + format('.0s')(currentItem[s.name].cap),
+           stroke: '#000000'}
+        );
+      }
+      return items;
+    }).reduce((accum, arr) => accum.concat(arr), []);
     return {
       x: formatDate(xAccessor(currentItem)),
       y: yValues,
@@ -45,6 +58,7 @@ const tooltipContent = (symbols) => {
 
 class HotAirChart extends React.Component {
   render() {
+    const showMarketCap = this.props.showMarketCap;
     const xScaleProvider = discontinuousTimeScaleProvider
       .inputDateAccessor(d => d.date);
     const {
@@ -54,14 +68,13 @@ class HotAirChart extends React.Component {
       displayXAccessor,
     } = xScaleProvider(this.props.data);
 
-    const dayCount = data.length > this.props.dayCount ? this.props.dayCount: data.length;
     const xExtents = [
+      xAccessor(data[data.length - this.props.dayCount]),
       xAccessor(last(data)),
-      xAccessor(data[data.length - dayCount])
     ];
 
     const symbols = this.props.data.symbols;
-    const calculateYExtents = (d) => {
+    const calculateYExtentsPrice = (d) => {
       let extents = [];
       symbols.forEach(s => {
         let name = s.name;
@@ -71,7 +84,17 @@ class HotAirChart extends React.Component {
        });
       return extents;
     };
-    const margin = { left: 70, right: 70, top: 20, bottom: 30};
+
+    const calculateYExtentsMarketCap = (d) => {
+      let extents = [];
+      symbols.forEach(s => {
+        let name = s.name;
+        d[name].cap && extents.push(d[name].cap);
+      });
+      return extents;
+    };
+
+    const margin = this.props.margin;
     
     return (
       <ChartCanvas ratio={1} width={this.props.width} height={this.props.height}
@@ -86,7 +109,7 @@ class HotAirChart extends React.Component {
                    xExtents={xExtents}>
 
           <Chart id={1}
-                 yExtents={calculateYExtents}>
+                 yExtents={calculateYExtentsPrice}>
               <XAxis
                 axisAt="bottom"
                 orient="bottom"
@@ -95,7 +118,6 @@ class HotAirChart extends React.Component {
                 tickStrokeOpacity={0.2}
                 tickStrokeWidth={0.5}
               />
-
               <YAxis
                 axisAt="right"
                 orient="right"
@@ -128,6 +150,20 @@ class HotAirChart extends React.Component {
                 fontSize={15}
               />
           </Chart>
+          {showMarketCap && 
+          <Chart id={2}
+                 yExtents={calculateYExtentsMarketCap}>
+              <YAxis
+                axisAt="left"
+                orient="left"
+                ticks={5}
+                tickFormat={format(".0s")}
+                innerTickSize={-1 * this.props.width}
+                tickStrokeDasharray='Solid'
+                tickStrokeOpacity={0.2}
+                tickStrokeWidth={0.5}
+              />
+          </Chart>}
           <CrossHairCursor />
       </ChartCanvas>
       
