@@ -1,44 +1,85 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Group } from '@vx/group';
+import { Grid } from '@vx/grid';
 import { AxisRight, AxisBottom } from '@vx/axis';
 import { scaleTime, scaleLinear } from '@vx/scale';
 import { LinePath } from '@vx/shape';
 import { extent, max } from 'd3-array';
+import { localPoint } from '@vx/event';
+import styled from 'react-emotion';
+import CrosshairsWithTooltip from './CrosshairsWithTooltip';
+import { Object } from 'core-js';
+import debounce from 'lodash/debounce';
+
+const Rect = styled('rect')`
+  cursor: crosshair;
+  pointer-events: all;
+  visibility: hidden;
+  :active {
+    cursor: grab;
+  }
+`;
 
 
 class HotAirChart extends React.Component {
   constructor(props) {
     super(props);
-    this.onDragStart = this.onDragStart.bind(this);
-    this.onDragEnd = this.onDragEnd.bind(this);
-    
     this.state = {
       isDragging: false,
+      datum: null,
     };
   }
-  
-  onDragStart(e) {
-    debugger;
-    this.setState({isDragging: true});
-  }
 
-  onDrag(shiftCb, spacing, e) {
+  /* componentWillMount = () => {
+   *   this.handleMouseOverDebounced = debounce(() =>
+   *     
+   * }; */
+  
+  handleMouseOver = (marginLeft, marginTop, dataAcessor,  e) => {
+    if (!this.state.isDragging) {
+      e.persist();
+      console.log('mousing over');
+      let coords = localPoint(e.target.ownerSVGElement, e);
+      coords.x = coords.x - marginLeft;
+      coords.y = coords.y - marginTop;
+      this.setState(Object.assign(this.state,
+                                  {datum: {data: null, coords: coords}}));
+    }
+  };
+
+  handleMouseOut = () => {
+    console.log('moused out!');
+    if (this.state.datum) {
+      this.setState(Object.assign(this.state, {datum: null}));
+    }
+  };
+  
+  handleDragStart = (e) => {
+    e.preventDefault();
+    this.setState({isDragging: true});
+  };
+  
+  handleDrag = (shiftCb, spacing, e) => {
     if (this.state.isDragging) {
+      e.preventDefault();
       // we want to go the opposite way of the actual movement
       const sign = -Math.sign(e.movementX);
       const extentsShifted = Math.ceil(Math.abs(e.movementX) / Math.floor(spacing));
       extentsShifted > 0 && shiftCb(sign * extentsShifted);
     }
-  }
-
-  onDragEnd(e) {
+  };
+  
+  handleDragEnd = (e) => {
+    e.preventDefault();
     if (this.state.isDragging) {
       this.setState({isDragging: false});
     }
-  }
+  };
 
 
   render() {
+    
     const width = this.props.width;
     const height = this.props.height;
     const margin = this.props.margin;
@@ -63,45 +104,70 @@ class HotAirChart extends React.Component {
       domain: [0, max(data, maxYScale)],
     });
 
-    // pixel space between datums, required to calculate how chart shifts
-    // when dragged
     const xSpacing = xScale(data[1].date) - xScale(data[0].date);
     const shiftCb = this.props.shiftCb;
-    const doDrag = this.onDrag.bind(this, shiftCb, xSpacing);
-    
+    const doDrag = this.handleDrag.bind(this, shiftCb, xSpacing);
+    const highlightedLine = this.props.highlightedLine;
+    const handleMouseOver = this.handleMouseOver.bind(this, margin.left, margin.top,
+                                                      null);
+
     const linePath = (symbol, data) => {
       const y = (d) => d[symbol.name].close;
+      const strokeWidth = highlightedLine === symbol.name ? 6 : 2
       return (
-        <LinePath
-          key={symbol.name}
-          data={data}
-          xScale={xScale}
-          yScale={yScale}
-          x={x}
-          y={y}
-          stroke={symbol.color}
-          strokeWidth={2}
-        />
+        <React.Fragment key={symbol.name}>
+            <LinePath
+              key={symbol.name}
+              data={data}
+              xScale={xScale}
+              yScale={yScale}
+              x={x}
+              y={y}
+              stroke={symbol.color}
+              strokeWidth={strokeWidth}
+            />
+            <LinePath
+              key={'hidden' + symbol.name}
+              data={data}
+              xScale={xScale}
+              yScale={yScale}
+              x={x}
+              y={y}
+              stroke={symbol.color}
+              strokeWidth={strokeWidth + 5}
+              onMouseMove={() => handleMouseOver}
+              onMouseOut={() => this.handleMouseOut}
+              style={{pointerEvents: 'all', visibility: 'hidden'}}
+            />
+        </React.Fragment>
       );
     };
 
-    // const linePaths = this.props.data.symbols.map(s => linePath(s.name));
     return (
       <svg width={width} height={height}>
-          <Group top={margin.top} left={margin.left} style={{cursor: 'move'}}
-                 draggable="true"
-                 onMouseMove={doDrag}
-                 onMouseUp={this.onDragEnd}
-                 onMouseDown={(e) => this.onDragStart(e)}>
-              <rect
+          <Group top={margin.top} left={margin.left} style={{cursor: 'crosshair'}}>
+              <Rect
                 width={width}
                 height={height}
-                style={{pointerEvents: 'all', visibility: 'hidden'}}
-                onMouseMove={doDrag}
-                onMouseUp={this.onDragEnd}
-                onMouseDown={this.onDragStart}>
-              </rect>
+                onMouseMove={(e) => doDrag(e)}
+                onMouseUp={this.handleDragEnd}
+                onMouseDown={this.handleDragStart}
+                onWheel={this.props.onScroll}>
+              </Rect>
               {symbols.map(s => linePath(s, data))}
+              {<CrosshairsWithTooltip
+                 margin={margin}
+                 width={width}
+                 height={height}
+                 datum={this.state.datum}
+               />}
+
+              <Grid
+                xScale={xScale}
+                yScale={yScale}
+                width={width - margin.left - margin.right}
+                height={height - margin.top - margin.bottom}
+              />
               <AxisBottom
                 scale={xScale}
                 top={yMax}
@@ -124,7 +190,17 @@ class HotAirChart extends React.Component {
   }
 }
 
-
+HotAirChart.propTypes = {
+  data: PropTypes.array.isRequired,
+  symbols: PropTypes.array.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  shiftCb: PropTypes.func,
+  showMarketCap: PropTypes.bool,
+  margin: PropTypes.object,
+  highlightedLine: PropTypes.string,
+  onScroll: PropTypes.func,
+};
     
 
     /* import { timeFormat } from "d3-time-format";

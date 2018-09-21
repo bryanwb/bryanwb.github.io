@@ -3,11 +3,13 @@ import fs from 'fs';
 import path from 'path';
 import './App.css';
 import BitcoinLogo from './images/Bitcoin_logo.svg';
+import GoldBar from './images/gold-bar.png';
 import DATA from './data/GOLD-BTC.json';
 import Chart from './components/Chart';
-import { Object } from 'core-js';
-/* import ChartButtons from './components/ChartButtons';
- * import ZoomButtons from './components/ZoomButtons'; */
+import { scaleOrdinal } from '@vx/scale';
+import { LegendOrdinal } from '@vx/legend';
+import ChartLegend from './components/ChartLegend';
+import ZoomButtons from './components/ZoomButtons';
 
 // returns an offset from the end of the data
 const rangeToOffset = (range) => {
@@ -45,7 +47,7 @@ const rangeToOffset = (range) => {
 const ChartHeadline = (props) => {
   return (
     <div style={{width: "100%", textAlign: "center", position: 'relative'}}>
-        <h1>Comparing <img src={BitcoinLogo} style={{height: "1em"}} /> and Gold</h1>
+        <h1>Comparing <img src={BitcoinLogo} style={{height: "1em"}} /> and <img src={GoldBar} style={{height: "1em"}} />Gold</h1>
     </div>
   );
 };
@@ -58,13 +60,30 @@ const loadSeries = (showGold, showBtc) => {
 
   showGold && symbols.push({name: 'GOLD', color: '#CFB53B', measure: '/kg'});
   showBtc && symbols.push({name: 'BTC', color: "#ff7f0e"});
+  
   return [DATA, symbols];
 };
 
 const sliceByRange = (range, data) => {
-  const startOffset = range.start === -Infinity ? 0 : data.length + range.start;
-  const endOffset = data.length + range.end;
-  return data.slice(startOffset, endOffset)
+  let startOffset;
+  if (range.start === -Infinity) {
+    startOffset = -data.length;
+  } else if (range.start > -2) {
+    startOffset = -2;
+  } else {
+    startOffset = range.start;
+  }
+
+  let endOffset;
+  if (range.end > 0 || range.end < range.start) {
+    endOffset = 0;
+  } else {
+    endOffset = range.end;
+  }
+  
+  const dataSegment = data.slice(data.length + startOffset, data.length + endOffset);
+
+  return dataSegment;
 };
 
 class App extends Component {
@@ -77,36 +96,54 @@ class App extends Component {
         btc: true,
         gold: true,
       },
+      highlightedLine: null,
       range: {name: 'YTD', start: start, end: 0},
     };
     this.ranges = ['7d', '1m', '3m', '1y', 'YTD', 'ALL'];
-    this.onChangeZoom = this.onChangeZoom.bind(this);
-    this.onToggle = this.onToggle.bind(this);
-    this.onShift = this.onShift.bind(this);
   }
 
-  onToggle(key, e) {
+  onToggle = (key, e) => {
     let copy = Object.assign({}, this.state);
     copy.show[key] = !copy.show[key];
     this.setState(copy);
-  }
+  };
 
-  onChangeZoom(e) {
+  onChangeZoom = (e) => {
     const rangeName = e.target.textContent;
     const start = rangeToOffset(rangeName);
-    this.setState(Object.assign(this.state, {name: rangeName, start: start, end: 0}));
-  }
+    this.setState(Object.assign(this.state,
+                                {range: {name: rangeName, start: start, end: 0}}));
+  };
 
-  onShift(extentCount) {
+  onZoomScroll = (e) => {
+    e.preventDefault();
+    // if scrolling up, zoom in, otherwise, zoom out
+    const zoomIn = e.deltaY > 0;
+    if (zoomIn) {
+      this.onShift(10, -10);
+    } else {
+      this.onShift(-10, 10);
+    }
+  };
+
+  onShift = (extentCountLeft, extentCountRight = null) => {
+    extentCountRight = extentCountRight ? extentCountRight : extentCountLeft;
     const {range: name, start: start, end: end} = this.state.range;
-    let newStart = start + extentCount;
-    let newEnd = end + extentCount;
-    newStart = newStart > 0 ? -3 : newStart;
-    newEnd = newEnd > 0 ? 0: newEnd;
-    
+    const newStart = start + extentCountLeft;
+    let newEnd = end + extentCountRight;
+
     const newRange = {name: name, start: newStart, end: newEnd};
+    
     this.setState(Object.assign(this.state, {range: newRange}));
-  }
+  };
+
+  onMouseOverLegend = (symbol) => {
+    this.setState(Object.assign(this.state, {highlightedLine: symbol}));
+  };
+
+  onMouseOutLegend = () => {
+    this.setState(Object.assign(this.state, {highlightedLine: null}));
+  };
   
   render() {
     const width = 1200;
@@ -119,6 +156,7 @@ class App extends Component {
     
     return (
       <div className="App" style={{margin: 'auto', marginTop: "2vh", width: width, height: height}}>
+          <ChartHeadline />
           <Chart
             data={data}
             symbols={symbols}
@@ -126,8 +164,24 @@ class App extends Component {
             height={height}
             shiftCb={this.onShift}
             showMarketCap={showMarketCap}
+            highlightedLine={this.state.highlightedLine}
             margin={margin}
+            onScroll={this.onZoomScroll}
           />
+          <div style={{display: 'flex', marginLeft: margin.left}}>
+              <ZoomButtons
+                onClick={this.onChangeZoom}
+                ranges={this.ranges}
+                current={this.state.range.name}
+              />
+              <ChartLegend
+                symbols={symbols}
+                onToggle={this.onToggle}
+                show={this.state.show}
+                onMouseOver={this.onMouseOverLegend}
+                onMouseOut={this.onMouseOutLegend}
+              />
+          </div>
       </div>
     )
     /* return (
