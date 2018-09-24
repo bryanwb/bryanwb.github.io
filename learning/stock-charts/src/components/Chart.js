@@ -14,7 +14,7 @@ import debounce from 'lodash/debounce';
 
 const Rect = styled('rect')`
   cursor: crosshair;
-  pointer-events: all;
+  /* pointer-events: all; */
   visibility: hidden;
   :active {
     cursor: grab;
@@ -28,30 +28,36 @@ class HotAirChart extends React.Component {
     this.state = {
       isDragging: false,
       datum: null,
+      showCrosshairs: false,
     };
+    this.crosshairsLock = false;
   }
 
-  /* componentWillMount = () => {
-   *   this.handleMouseOverDebounced = debounce(() =>
-   *     
-   * }; */
+  componentWillMount = () => {
+    this.unlockCrosshairs = debounce(() => this.crosshairsLock = false, 10);
+  };
   
-  handleMouseOver = (marginLeft, marginTop, dataAcessor,  e) => {
+  handleMouseOver = (e) => {
     if (!this.state.isDragging) {
-      e.persist();
-      console.log('mousing over');
       let coords = localPoint(e.target.ownerSVGElement, e);
-      coords.x = coords.x - marginLeft;
-      coords.y = coords.y - marginTop;
-      this.setState(Object.assign(this.state,
-                                  {datum: {data: null, coords: coords}}));
+      this.crosshairsLock = true;
+      this.setState((state) => ({
+        isDragging: state.isDragging,
+        datum: {data: null, coords: coords},
+        showCrosshairs: true,
+      }));
+      // will trigger after a delay
+      this.unlockCrosshairs();
     }
   };
 
   handleMouseOut = () => {
-    console.log('moused out!');
-    if (this.state.datum) {
-      this.setState(Object.assign(this.state, {datum: null}));
+    if (!this.crosshairsLock) {
+      this.setState((state) => ({
+        isDragging: state.isDragging,
+        datum: state.datum,
+        showCrosshairs: false,
+      }));
     }
   };
   
@@ -108,8 +114,6 @@ class HotAirChart extends React.Component {
     const shiftCb = this.props.shiftCb;
     const doDrag = this.handleDrag.bind(this, shiftCb, xSpacing);
     const highlightedLine = this.props.highlightedLine;
-    const handleMouseOver = this.handleMouseOver.bind(this, margin.left, margin.top,
-                                                      null);
 
     const linePath = (symbol, data) => {
       const y = (d) => d[symbol.name].close;
@@ -134,8 +138,8 @@ class HotAirChart extends React.Component {
               x={x}
               y={y}
               stroke={symbol.color}
-              strokeWidth={strokeWidth + 5}
-              onMouseMove={() => handleMouseOver}
+              strokeWidth={strokeWidth + 40}
+              onMouseOver={() => this.handleMouseOver}
               onMouseOut={() => this.handleMouseOut}
               style={{pointerEvents: 'all', visibility: 'hidden'}}
             />
@@ -159,6 +163,7 @@ class HotAirChart extends React.Component {
                  margin={margin}
                  width={width}
                  height={height}
+                 show={this.state.showCrosshairs}
                  datum={this.state.datum}
                />}
 

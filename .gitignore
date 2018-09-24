@@ -11,3 +11,4 @@ yarn-error.log
 /public
 .DS_Store
 
+*.0000000001
