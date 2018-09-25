@@ -5,12 +5,14 @@ import { Grid } from '@vx/grid';
 import { AxisRight, AxisBottom } from '@vx/axis';
 import { scaleTime, scaleLinear } from '@vx/scale';
 import { LinePath } from '@vx/shape';
-import { extent, max } from 'd3-array';
+import { extent, max, scan } from 'd3-array';
 import { localPoint } from '@vx/event';
 import styled from 'react-emotion';
-import CrosshairsWithTooltip from './CrosshairsWithTooltip';
+import Crosshairs from './Crosshairs';
+import Tooltip from './Tooltip';
 import { Object } from 'core-js';
 import debounce from 'lodash/debounce';
+import { withTooltip, TooltipWithBounds } from '@vx/tooltip';
 
 const Rect = styled('rect')`
   cursor: crosshair;
@@ -28,6 +30,7 @@ class HotAirChart extends React.Component {
     this.state = {
       isDragging: false,
       datum: null,
+      crosshairsCoords: null,
       showCrosshairs: false,
     };
     this.crosshairsLock = false;
@@ -37,27 +40,43 @@ class HotAirChart extends React.Component {
     this.unlockCrosshairs = debounce(() => this.crosshairsLock = false, 10);
   };
   
-  handleMouseOver = (e) => {
+  handleMouseOver = (xToDataAccessor, e) => {
     if (!this.state.isDragging) {
+      // cancel an early unlock
+      this.unlockCrosshairs.cancel();
+      
       let coords = localPoint(e.target.ownerSVGElement, e);
+
+      const datum = xToDataAccessor(coords.x);
+
       this.crosshairsLock = true;
       this.setState((state) => ({
         isDragging: state.isDragging,
-        datum: {data: null, coords: coords},
+        datum: datum,
+        crosshairsCoords: coords,
         showCrosshairs: true,
       }));
-      // will trigger after a delay
+
+      this.props.showTooltip({
+        tooltipLeft: coords.x,
+        tooltipTop: coords.y,
+        tooltipData: datum,
+      });
+      
+      // unlock crosshairs after a delay
       this.unlockCrosshairs();
     }
   };
 
-  handleMouseOut = () => {
+  handleMouseOut = (hideTooltip) => {
     if (!this.crosshairsLock) {
+      
       this.setState((state) => ({
         isDragging: state.isDragging,
         datum: state.datum,
         showCrosshairs: false,
       }));
+      hideTooltip();
     }
   };
   
@@ -85,19 +104,25 @@ class HotAirChart extends React.Component {
 
 
   render() {
-    
-    const width = this.props.width;
-    const height = this.props.height;
-    const margin = this.props.margin;
-    const dayCount = this.props.dayCount;
-    const data = this.props.data;
-    this.shift = this.props.shift;
+
+    const {
+      width,
+      height,
+      margin,
+      data,
+      shift,
+      symbols,
+      tooltipData,
+      tooltipTop,
+      tooltipLeft,
+      tooltipOpen,
+      hideTooltip,
+    } = this.props;
     
     const xMax = width - margin.left - margin.right;
     const yMax = height - margin.top - margin.bottom;
 
     const x = d => new Date(d.date);
-    const symbols = this.props.symbols;
     
     const maxYScale = (d) => Math.max(...symbols.map(s => d[s.name].close));
     
@@ -110,6 +135,21 @@ class HotAirChart extends React.Component {
       domain: [0, max(data, maxYScale)],
     });
 
+    // maps a value on the X axis to the corresponding datum
+    const xToDataAccessor = (xVal) => {
+      const date = xScale.invert(xVal - margin.left);
+      date.setUTCHours(0);
+      date.setUTCMinutes(0);
+      date.setUTCSeconds(0);
+      const index = data.findIndex((d) => d.date.valueOf() >= date.valueOf());
+      if (index === -1) {
+        console.log(`Could not find matching data point for ${date}`);
+        return null;
+      } else {
+        return data[index];
+      }
+    };
+    
     const xSpacing = xScale(data[1].date) - xScale(data[0].date);
     const shiftCb = this.props.shiftCb;
     const doDrag = this.handleDrag.bind(this, shiftCb, xSpacing);
@@ -119,78 +159,77 @@ class HotAirChart extends React.Component {
       const y = (d) => d[symbol.name].close;
       const strokeWidth = highlightedLine === symbol.name ? 6 : 2
       return (
-        <React.Fragment key={symbol.name}>
-            <LinePath
-              key={symbol.name}
-              data={data}
-              xScale={xScale}
-              yScale={yScale}
-              x={x}
-              y={y}
-              stroke={symbol.color}
-              strokeWidth={strokeWidth}
-            />
-            <LinePath
-              key={'hidden' + symbol.name}
-              data={data}
-              xScale={xScale}
-              yScale={yScale}
-              x={x}
-              y={y}
-              stroke={symbol.color}
-              strokeWidth={strokeWidth + 40}
-              onMouseOver={() => this.handleMouseOver}
-              onMouseOut={() => this.handleMouseOut}
-              style={{pointerEvents: 'all', visibility: 'hidden'}}
-            />
-        </React.Fragment>
+        <LinePath
+          key={symbol.name}
+          data={data}
+          xScale={xScale}
+          yScale={yScale}
+          x={x}
+          y={y}
+          stroke={symbol.color}
+          strokeWidth={strokeWidth}
+          onMouseOver={() => e => this.handleMouseOver(xToDataAccessor, e)}
+          onMouseOut={() => () => this.handleMouseOut(hideTooltip)}
+          style={{pointerEvents: 'all'}}
+        />
       );
     };
 
     return (
-      <svg width={width} height={height}>
-          <Group top={margin.top} left={margin.left} style={{cursor: 'crosshair'}}>
-              <Rect
-                width={width}
-                height={height}
-                onMouseMove={(e) => doDrag(e)}
-                onMouseUp={this.handleDragEnd}
-                onMouseDown={this.handleDragStart}
-                onWheel={this.props.onScroll}>
-              </Rect>
-              {symbols.map(s => linePath(s, data))}
-              {<CrosshairsWithTooltip
-                 margin={margin}
-                 width={width}
-                 height={height}
-                 show={this.state.showCrosshairs}
-                 datum={this.state.datum}
-               />}
-
-              <Grid
-                xScale={xScale}
-                yScale={yScale}
-                width={width - margin.left - margin.right}
-                height={height - margin.top - margin.bottom}
-              />
-              <AxisBottom
-                scale={xScale}
-                top={yMax}
-                stroke='#1b1a1e'
-                tickTextFill="#1b1a1e"
-              />
-              <AxisRight
-                scale={yScale}
-                top={0}
-                left={width - margin.left - margin.right}
-                label='Close Price ($)'
-                labelOffset={50}
-                labelProps={{fontSize: 15}}
-                stroke="#1b1a1e"
-                tickTextFill="#1b1a1e"
-              />
-          </Group>
-      </svg>
+      <React.Fragment>
+          <svg width={width} height={height}>
+              <Group top={margin.top} left={margin.left} style={{cursor: 'crosshair'}}>
+                  <Rect
+                    width={width}
+                    height={height}
+                    onMouseMove={(e) => doDrag(e)}
+                    onMouseUp={this.handleDragEnd}
+                    onMouseDown={this.handleDragStart}
+                    onWheel={this.props.onScroll}>
+                  </Rect>
+                  {symbols.map(s => linePath(s, data))}
+                  {<Crosshairs
+                     margin={margin}
+                     width={width}
+                     height={height}
+                     show={this.state.showCrosshairs}
+                     coords={this.state.crosshairsCoords}
+                     datum={this.state.datum}
+                  />}
+                  <Grid
+                    xScale={xScale}
+                    yScale={yScale}
+                    width={width - margin.left - margin.right}
+                    height={height - margin.top - margin.bottom}
+                  />
+                  <AxisBottom
+                    scale={xScale}
+                    top={yMax}
+                    stroke='#1b1a1e'
+                    tickTextFill="#1b1a1e"
+                  />
+                  <AxisRight
+                    scale={yScale}
+                    top={0}
+                    left={width - margin.left - margin.right}
+                    label='Close Price ($)'
+                    labelOffset={50}
+                    labelProps={{fontSize: 15}}
+                    stroke="#1b1a1e"
+                    tickTextFill="#1b1a1e"
+                  />
+              </Group>
+          </svg>
+          {tooltipOpen && 
+          <TooltipWithBounds
+            key={Math.random()}
+            top={tooltipTop}
+            left={tooltipLeft}
+          >
+              <Tooltip symbols={symbols} datum={tooltipData} />
+          </TooltipWithBounds>
+          }
+      </React.Fragment>
     );
   }
 }
@@ -206,181 +245,7 @@ HotAirChart.propTypes = {
   highlightedLine: PropTypes.string,
   onScroll: PropTypes.func,
 };
-    
 
-    /* import { timeFormat } from "d3-time-format";
-     * import { format } from "d3-format";
-     * import {Chart, ChartCanvas} from 'react-stockcharts/es';
-     * import { XAxis, YAxis } from "react-stockcharts/es/lib/axes"
-     * import { LineSeries } from 'react-stockcharts/es/lib/series';
-     * import { discontinuousTimeScaleProvider } from "react-stockcharts/es/lib/scale";
-     * import { last } from "react-stockcharts/es/lib/utils";
-     * import {
-     *   CrossHairCursor,
-     *   MouseCoordinateX,
-     *   MouseCoordinateY,
-     * } from "react-stockcharts/es/lib/coordinates";
-     * import { HoverTooltip } from "react-stockcharts/es/lib/tooltip";
-     * 
-     * 
-     * const formatNum = (symbol, num) => {
-     *   let numFormatted = '$ ' + num.toFixed().toString().replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1,");
-     *   if (symbol.measure) {
-     *     numFormatted += symbol.measure;
-     *   }
-     *   // this magic incantation adds commas in the thousands place
-     *   return numFormatted
-     * };
-     * 
-     * // remove the hours:minutes:seconds
-     * const formatDate = (date) => {
-     *   return date.toUTCString().split(/\ \d\d:\d\d:\d\d/)[0];
-     * };
-     * 
-     * const tooltipContent = (symbols) => {
-     *   return (d) => {
-     *     const {currentItem, xAccessor} = d;
-     *     const yValues = symbols.map(s => {
-     *       let items = [
-     *         {
-     *           label: s.name + ' ',
-     *           value: formatNum(s, currentItem[s.name].close),
-     *           stroke: '#000000'
-     *         },
-     *       ];
-     *       if (currentItem[s.name].cap) {
-     *         items.push(
-     *           {label: 'Market Cap',
-     *            value: '$ ' + format('.0s')(currentItem[s.name].cap),
-     *            stroke: '#000000'}
-     *         );
-     *       }
-     *       return items;
-     *     }).reduce((accum, arr) => accum.concat(arr), []);
-     *     return {
-     *       x: formatDate(xAccessor(currentItem)),
-     *       y: yValues,
-     *     };
-     *   };
-     * };
-     * 
-     * class HotAirChart extends React.Component {
-     *   render() {
-     *     const showMarketCap = this.props.showMarketCap;
-     *     const xScaleProvider = discontinuousTimeScaleProvider
-     *       .inputDateAccessor(d => d.date);
-     *     const {
-     *       data,
-     *       xScale,
-     *       xAccessor,
-     *       displayXAccessor,
-     *     } = xScaleProvider(this.props.data);
-     * 
-     *     const xExtents = [
-     *       xAccessor(data[data.length - this.props.dayCount]),
-     *       xAccessor(last(data)),
-     *     ];
-     * 
-     *     const symbols = this.props.data.symbols;
-     *     const calculateYExtentsPrice = (d) => {
-     *       let extents = [];
-     *       symbols.forEach(s => {
-     *         let name = s.name;
-     *          extents.push(d[name].close);
-     *          d[name].high && extents.push(d[name].high);
-     *          d[name].low && extents.push(d[name].low);
-     *        });
-     *       return extents;
-     *     };
-     * 
-     *     const calculateYExtentsMarketCap = (d) => {
-     *       let extents = [];
-     *       symbols.forEach(s => {
-     *         let name = s.name;
-     *         d[name].cap && extents.push(d[name].cap);
-     *       });
-     *       return extents;
-     *     };
-     * 
-     *     const margin = this.props.margin;
-     *     
-     *     return (
-     *       <ChartCanvas ratio={1} width={this.props.width} height={this.props.height}
-     *                    margin={margin}
-     *                    type={'svg'}
-     *                    pointsPerPxThreshold={1}
-     *                    seriesName="GoldAndBTC"
-     *                    data={data}
-     *                    xAccessor={xAccessor}
-     *                    displayXAccessor={displayXAccessor}
-     *                    xScale={xScale}
-     *                    xExtents={xExtents}>
-     * 
-     *           <Chart id={1}
-     *                  yExtents={calculateYExtentsPrice}>
-     *               <XAxis
-     *                 axisAt="bottom"
-     *                 orient="bottom"
-     *                 innerTickSize={-1 * (this.props.height - margin.top - margin.bottom)}
-     *                 tickStrokeDasharray='Solid'
-     *                 tickStrokeOpacity={0.2}
-     *                 tickStrokeWidth={0.5}
-     *               />
-     *               <YAxis
-     *                 axisAt="right"
-     *                 orient="right"
-     *                 ticks={5}
-     *                 innerTickSize={-1 * (this.props.width - margin.left - margin.right)}
-     *                 tickStrokeDasharray='Solid'
-     *                 tickStrokeOpacity={0.2}
-     *                 tickStrokeWidth={0.5}
-     *               />
-     *               <MouseCoordinateX
-     * 	        at="bottom"
-     * 	        orient="bottom"
-     * 	        displayFormat={timeFormat("%Y-%m-%d")} />
-     * 	      <MouseCoordinateY
-     * 	        at="right"
-     * 	        orient="right"
-     * 	        displayFormat={format(".2f")} />
-     *               {
-     *                 symbols.map(s => {
-     *                   return <LineSeries
-     *                            key={s.name}
-     *                            yAccessor={d => d[s.name].close}
-     *                            stroke={s.color}
-     *                            strokeWidth={2}
-     *                   />
-     *                 })
-     *               }
-     *               <HoverTooltip 
-     *                 tooltipContent={tooltipContent(symbols)}
-     *                 fontSize={15}
-     *               />
-     *           </Chart>
-     *           {showMarketCap && 
-     *           <Chart id={2}
-     *                  yExtents={calculateYExtentsMarketCap}>
-     *               <YAxis
-     *                 axisAt="left"
-     *                 orient="left"
-     *                 ticks={5}
-     *                 tickFormat={format(".0s")}
-     *                 innerTickSize={-1 * this.props.width}
-     *                 tickStrokeDasharray='Solid'
-     *                 tickStrokeOpacity={0.2}
-     *                 tickStrokeWidth={0.5}
-     *               />
-     *           </Chart>}
-     *           <CrossHairCursor />
-     *       </ChartCanvas>
-     *       
-     * 
-     *       
-     *     );
-     * 
-     *   }
-     *   
-     * } */
+const HotAirChartWithTooltip = withTooltip(HotAirChart);
 
-    export default HotAirChart;
+export default HotAirChartWithTooltip;
