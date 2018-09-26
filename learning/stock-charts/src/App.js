@@ -6,10 +6,13 @@ import BitcoinLogo from './images/Bitcoin_logo.svg';
 import GoldBar from './images/gold-bar.png';
 import DATA from './data/GOLD-BTC.json';
 import Chart from './components/Chart';
+import Overlay from './components/Overlay';
 import { scaleOrdinal } from '@vx/scale';
 import { LegendOrdinal } from '@vx/legend';
+import { Group } from '@vx/group';
 import ChartLegend from './components/ChartLegend';
 import ZoomButtons from './components/ZoomButtons';
+import { Text } from '@vx/text';
 
 // returns an offset from the end of the data
 const rangeToOffset = (range) => {
@@ -91,6 +94,7 @@ class App extends Component {
     super(props);
     const start = rangeToOffset('YTD');
     this.state = {
+      showOverlay: true,
       show: {
         marketCap: false,
         btc: true,
@@ -102,6 +106,10 @@ class App extends Component {
     this.ranges = ['7d', '1m', '3m', '1y', 'YTD', 'ALL'];
   }
 
+  toggleOverlay = () => {
+    this.setState(Object.assign(this.state, {showOverlay: false}));
+  };
+  
   onToggle = (key, e) => {
     let copy = Object.assign({}, this.state);
     copy.show[key] = !copy.show[key];
@@ -155,57 +163,46 @@ class App extends Component {
     const data = sliceByRange(range, DATA);
     
     return (
-      <div className="App" style={{margin: 'auto', marginTop: "2vh", width: width, height: height}}>
-          <ChartHeadline />
-          <Chart
-            data={data}
-            symbols={symbols}
-            width={width}
-            height={height}
-            shiftCb={this.onShift}
-            showMarketCap={showMarketCap}
-            highlightedLine={this.state.highlightedLine}
-            margin={margin}
-            onScroll={this.onZoomScroll}
-          />
-          <div style={{display: 'flex', marginLeft: margin.left}}>
-              <ZoomButtons
-                onClick={this.onChangeZoom}
-                ranges={this.ranges}
-                current={this.state.range.name}
-              />
-              <ChartLegend
+      <div style={{position: 'relative', display: 'flex'}}>
+          <div className="App" style={{
+            opacity: this.state.showOverlay ? 0.3 : 1.0,
+            margin: 'auto',
+            marginTop: "2vh",
+            width: width,
+            height: height,
+          }}>
+              <ChartHeadline />
+              <Chart
+                data={data}
                 symbols={symbols}
-                onToggle={this.onToggle}
-                show={this.state.show}
-                onMouseOver={this.onMouseOverLegend}
-                onMouseOut={this.onMouseOutLegend}
+                width={width}
+                height={height}
+                shiftCb={this.onShift}
+                showMarketCap={showMarketCap}
+                highlightedLine={this.state.highlightedLine}
+                margin={margin}
+                onScroll={this.onZoomScroll}
               />
+              <div style={{display: 'flex', marginLeft: margin.left}}>
+                  <ZoomButtons
+                    onClick={this.onChangeZoom}
+                    ranges={this.ranges}
+                    current={this.state.range.name}
+                  />
+                  <ChartLegend
+                    symbols={symbols}
+                    onToggle={this.onToggle}
+                    show={this.state.show}
+                    onMouseOver={this.onMouseOverLegend}
+                    onMouseOut={this.onMouseOutLegend}
+                  />
+              </div>
           </div>
+          {this.state.showOverlay &&
+          <Overlay datum={data[data.length - 1]} toggleOverlay={this.toggleOverlay} />
+          }
       </div>
-    )
-    /* return (
-     *   <div className="App" style={{margin: 'auto', marginTop: "2vh", width: width, height: height}}>
-     *       <ChartHeadline />
-     *       <div style={{writingMode: 'vertical-lr', height: "100%", textAlign: "center", float: "right"}}>Price (USD)</div>
-     *       <Chart
-     *         data={data}
-     *         width={width}
-     *         height={height}
-     *         dayCount={calculateDayCount(range, data.length)}
-     *         showMarketCap={showMarketCap}
-     *         margin={margin}
-     *       />
-     *       <div style={{display: 'flex', marginLeft: margin.left}}>
-     *           <ZoomButtons
-     *             onClick={this.onChangeZoom}
-     *             ranges={this.ranges}
-     *             current={this.state.range}
-     *           />
-     *           <ChartButtons onToggle={this.onToggle} show={this.state.show} />
-     *       </div>
-     *   </div>
-     * ); */
+    );
   }
 }
 
