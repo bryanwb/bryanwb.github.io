@@ -16,7 +16,7 @@ import { withTooltip, TooltipWithBounds } from '@vx/tooltip';
 
 const Rect = styled('rect')`
   cursor: crosshair;
-  /* pointer-events: all; */
+  pointer-events: all;
   visibility: hidden;
   :active {
     cursor: grab;
