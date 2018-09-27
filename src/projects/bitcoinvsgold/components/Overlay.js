@@ -78,11 +78,11 @@ class Overlay extends React.Component {
               {message}
               <Reload />
               <ul style={{display: 'flex', listStyleType: 'none', margin: 0, padding: 0, alignItems: 'center', justifyContent: 'center'}}>
-                  <li style={{marginBottom: 0, paddingTop: '10px', width: '50%', borderRight: '1px solid rgb(221, 221, 221)'}}>
+                  <li style={{marginBottom: 0, width: '50%', borderRight: '1px solid rgb(221, 221, 221)'}}>
                       <span><img src={BitcoinSmallLogo} style={{height: "1em"}} />  $ {commarize(mostRecent.BTC.cap)}</span>
                       <p style={{fontSize: '0.7em', margin: '0 0 5px 0'}}>Market Cap</p>
                   </li>
-                  <li style={{marginBottom: 0, paddingTop: '10px', width: '50%'}}>
+                  <li style={{marginBottom: 0, width: '50%'}}>
                       <span><img src={GoldBar} style={{height: "1.1em"}} /> $ {commarize(goldMarketCap)}</span>
                       <p style={{fontSize: '0.7em', margin: '0 0 5px 0'}}>Market Cap</p>
                   </li>

@@ -48,7 +48,7 @@ const rangeToOffset = (range) => {
 const ChartHeadline = (props) => {
   return (
     <div style={{width: "100%", textAlign: "center", position: 'relative'}}>
-        <h1>Comparing <img src={BitcoinLogo} style={{height: "1em"}} /> and <img src={GoldBar} style={{height: "1em"}} />Gold</h1>
+        <h1>Comparing <img src={BitcoinLogo} style={{height: "1em", marginBottom: 0}} /> and <img src={GoldBar} style={{height: "1em", marginBottom: 0}} />Gold</h1>
     </div>
   );
 };
