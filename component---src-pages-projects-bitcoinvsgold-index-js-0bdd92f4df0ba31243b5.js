@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[19],{280:function(n,e,t){"use strict";t.r(e);var o=t(0),a=t.n(o),c=t(45),r=t.n(c),u=(t(613),t(272));r.a.render(a.a.createElement(u.default,null),document.getElementById("root"))},613:function(n,e,t){}}]);
+//# sourceMappingURL=component---src-pages-projects-bitcoinvsgold-index-js-0bdd92f4df0ba31243b5.js.map
