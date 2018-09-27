@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import path from 'path';
 import './App.css';
 import BitcoinLogo from './images/Bitcoin_logo.svg';
 import GoldBar from './images/gold-bar.png';
 import DATA from './data/GOLD-BTC.json';
 import Chart from './components/Chart';
 import Overlay from './components/Overlay';
-import { scaleOrdinal } from '@vx/scale';
-import { Group } from '@vx/group';
 import ChartLegend from './components/ChartLegend';
 import ZoomButtons from './components/ZoomButtons';
-import { Text } from '@vx/text';
 
 // returns an offset from the end of the data
 const rangeToOffset = (range) => {
@@ -48,7 +44,7 @@ const rangeToOffset = (range) => {
 const ChartHeadline = (props) => {
   return (
     <div style={{width: "100%", textAlign: "center", position: 'relative'}}>
-        <h1>Comparing <img src={BitcoinLogo} style={{height: "1em", marginBottom: 0}} /> and <img src={GoldBar} style={{height: "1em", marginBottom: 0}} />Gold</h1>
+        <h1>Comparing <img alt="Bitcoin logo" src={BitcoinLogo} style={{height: "1em", marginBottom: 0}} /> and <img alt="gold bar" src={GoldBar} style={{height: "1em", marginBottom: 0}} />Gold</h1>
     </div>
   );
 };
@@ -138,9 +134,7 @@ class App extends Component {
     const newStart = start + extentCountLeft;
     let newEnd = end + extentCountRight;
 
-    const newRange = {name: name, start: newStart, end: newEnd};
-    
-    this.setState(Object.assign(this.state, {range: newRange}));
+    this.setState(Object.assign(this.state, {range: {name: name, start: newStart, end: newEnd}}));
   };
 
   onMouseOverLegend = (symbol) => {

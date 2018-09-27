@@ -14,10 +14,8 @@ class Crosshairs extends React.Component {
       margin,
       width,
       height,
-      datum,
       coords,
       show,
-      symbols,
     } = this.props;
     
     const showCrosshairs = show && coords;

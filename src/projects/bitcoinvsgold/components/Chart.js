@@ -5,12 +5,11 @@ import { Grid } from '@vx/grid';
 import { AxisRight, AxisBottom } from '@vx/axis';
 import { scaleTime, scaleLinear } from '@vx/scale';
 import { LinePath } from '@vx/shape';
-import { extent, max, scan } from 'd3-array';
+import { extent, max } from 'd3-array';
 import { localPoint } from '@vx/event';
 import styled from 'react-emotion';
 import Crosshairs from './Crosshairs';
 import Tooltip from './Tooltip';
-import { Object } from 'core-js';
 import debounce from 'lodash/debounce';
 import { withTooltip, TooltipWithBounds } from '@vx/tooltip';
 
@@ -36,7 +35,7 @@ class HotAirChart extends React.Component {
     this.crosshairsLock = false;
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.unlockCrosshairs = debounce(() => this.crosshairsLock = false, 10);
   };
   
@@ -110,7 +109,7 @@ class HotAirChart extends React.Component {
       height,
       margin,
       data,
-      shift,
+      shiftCb,
       symbols,
       tooltipData,
       tooltipTop,
@@ -151,7 +150,6 @@ class HotAirChart extends React.Component {
     };
     
     const xSpacing = xScale(data[1].date) - xScale(data[0].date);
-    const shiftCb = this.props.shiftCb;
     const doDrag = this.handleDrag.bind(this, shiftCb, xSpacing);
     const highlightedLine = this.props.highlightedLine;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { commarize, formatNum } from '../utils/formatters';
+import { commarize } from '../utils/formatters';
 import { goldKgWorldwide } from '../utils/constants';
 import BitcoinSmallLogo from '../images/Bitcoin_small_logo.svg';
 import GoldBar from '../images/gold-bar.png';
@@ -58,8 +58,6 @@ class Overlay extends React.Component {
     const mostRecent = this.props.datum;
     let message;
     const goldMarketCap = mostRecent.GOLD.close * goldKgWorldwide;
-    const bitcoinCap = <p>Bitcoin is $ {commarize(mostRecent.BTC.cap)}</p>
-    const goldCap = <p>Gold is $ {commarize(goldMarketCap)}</p>;
     
     if (mostRecent.BTC.cap > goldMarketCap) {
       message = <H1>YES</H1>
@@ -79,11 +77,11 @@ class Overlay extends React.Component {
               <Reload />
               <ul style={{display: 'flex', listStyleType: 'none', margin: 0, padding: 0, alignItems: 'center', justifyContent: 'center'}}>
                   <li style={{marginBottom: 0, width: '50%', borderRight: '1px solid rgb(221, 221, 221)'}}>
-                      <span><img src={BitcoinSmallLogo} style={{height: "1em"}} />  $ {commarize(mostRecent.BTC.cap)}</span>
+                      <span><img alt="bitcoin small logo" src={BitcoinSmallLogo} style={{height: "1em"}} />  $ {commarize(mostRecent.BTC.cap)}</span>
                       <p style={{fontSize: '0.7em', margin: '0 0 5px 0'}}>Market Cap</p>
                   </li>
                   <li style={{marginBottom: 0, width: '50%'}}>
-                      <span><img src={GoldBar} style={{height: "1.1em"}} /> $ {commarize(goldMarketCap)}</span>
+                      <span><img alt="gold bar" src={GoldBar} style={{height: "1.1em"}} /> $ {commarize(goldMarketCap)}</span>
                       <p style={{fontSize: '0.7em', margin: '0 0 5px 0'}}>Market Cap</p>
                   </li>
               </ul>
