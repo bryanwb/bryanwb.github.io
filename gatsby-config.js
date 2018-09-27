@@ -5,7 +5,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-catch-links`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-emotion`,
     {
@@ -43,6 +42,6 @@ module.exports = {
         icon: "static/favicon.png", // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline'
+    'gatsby-plugin-offline',
   ],
 };
