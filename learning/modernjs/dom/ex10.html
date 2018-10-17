@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <table id="table">
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Smith</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Pete</td>
+      <td>Brown</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>Ann</td>
+      <td>Lee</td>
+      <td>5</td>
+    </tr>
+  </table>
+
+  <script>
+    function sortRows(row1, row2) {
+      let name1 = row1.children[0].textContent;
+      let name2 = row2.children[0].textContent;
+      if (name1 === name2) {
+        return 0;
+      }
+      return name1 > name2 ? 1 : -1;
+    }
+    
+    let table = document.getElementById('table').children[0];
+    let thead = table.children[0];
+    let rows = Array.from(table.children).slice(1);
+    rows.sort(sortRows);
+    //table.innerHTML = null;
+    table.append(thead);
+    for (let row of rows) {
+      table.append(row);
+    }
+  </script>
+
+</body>
+</html>

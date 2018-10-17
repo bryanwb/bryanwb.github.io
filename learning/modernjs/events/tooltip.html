@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      height: 2000px;
+      /* make body scrollable, the tooltip should work after the scroll */
+    }
+
+    .tooltip {
+      /* some styles for the tooltip, you can use your own instead */
+      position: fixed;
+      padding: 10px 20px;
+      border: 1px solid #b3c9ce;
+      border-radius: 4px;
+      text-align: center;
+      font: italic 14px/1.3 arial, sans-serif;
+      color: #333;
+      background: #fff;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa</p>
+  <p>LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa LaLaLa</p>
+
+  <button data-tooltip="the tooltip is longer than the element">Short button</button>
+  <button data-tooltip="HTML<br>tooltip<br>moar<br>tooltip<br>moar!!!!">One more button</button>
+
+  <p>Scroll the page to make buttons appear on the top, check if the tooltips show up correctly.</p>
+
+
+  <script>
+    let tooltipDisplayed = null;
+    
+    function positionAt(anchor, position, elem) {
+      if (position === 'top') {
+        elem.style.top = anchor.offsetTop - elem.offsetHeight + 'px';
+        elem.style.left = anchor.offsetLeft + 'px';
+      } else {
+        elem.style.top = anchor.offsetTop + anchor.offsetHeight + 'px';
+        elem.style.left = anchor.offsetLeft + 'px';
+      }
+    }
+    
+    function annotateElement(anchor, annotation) {
+      let elem = document.createElement('div');
+      elem.innerHTML = annotation;
+      elem.style.position = 'absolute';
+      elem.style.zIndex = 1;
+      elem.style.backgroundColor = 'white';
+      elem.style.border = '1px solid';
+      elem.style.borderRadius = '4px';
+      elem.style.padding = '10px';
+      anchor.parentElement.append(elem);
+      let position = elem.offsetHeight <= anchor.offsetTop ? 'top' : 'bottom';
+      positionAt(anchor, position, elem);
+      return elem;
+    }
+    
+    function showTooltip(evt) {
+      if (evt.target.tagName !== 'BUTTON') return;
+
+      let tooltip = evt.target.dataset.tooltip;
+
+      if (tooltip && tooltipDisplayed == null) {
+        tooltipDisplayed = annotateElement(evt.target, tooltip);
+      }
+    }
+
+    function hideTooltip(evt) {
+
+      if (tooltipDisplayed === null) return;
+
+      tooltipDisplayed.remove();
+      tooltipDisplayed = null;
+    }
+
+    document.addEventListener('mouseover', showTooltip);
+    document.addEventListener('mouseout', hideTooltip);
+    
+  </script>
+
+</body>
+</html>

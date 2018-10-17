@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    table {
+       border-collapse: collapse;
+     }
+     th, td {
+       border: 1px solid black;
+       padding: 4px;
+     }
+     th {
+       cursor: pointer;
+     }
+     th:hover {
+       background: yellow;
+     }
+  </style>
+</head>
+
+<body>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Age</th>
+        <th data-type="string">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>John</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Pete</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Ann</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Eugene</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Ilya</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    let grid = document.getElementById('grid');
+
+    function sortByAge(a, b) {
+      let ageA = parseInt(a.children[0].textContent);
+      let ageB = parseInt(b.children[0].textContent);
+
+      if (ageA === ageB) return 0;
+
+      return ageA > ageB ? 1 : -1;
+
+    }
+
+    function sortByName(a, b) {
+      let nameA = a.children[1].textContent;
+      let nameB = b.children[1].textContent;
+
+      if (nameA === nameB) return 0;
+
+      return nameA > nameB ? 1 : -1;
+
+    }
+
+    function sortTable(evt) {
+      if (evt.target.tagName !== 'TH') return;
+      let type = evt.target.dataset.type;
+      let tbody = grid.tBodies[0];
+      let rows;
+      if (type === 'number') {
+        rows = Array.from(tbody.rows).sort(sortByAge);
+      } else if (type === 'string') {
+        rows = Array.from(tbody.rows).sort(sortByName);
+      } else {
+        throw new Error('unsupported type');
+      }
+
+      let table = document.getElementById('grid');
+      for (let row of rows) {
+        tbody.append(row);
+      }
+    }
+    
+    grid.addEventListener('click', sortTable);
+  </script>
+
+</body>
+</html>

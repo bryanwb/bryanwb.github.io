@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <link rel="stylesheet" href="index.css"> -->
+  <style>
+    .note {
+       position: absolute;
+       z-index: 1000;
+       padding: 5px;
+       border: 1px solid black;
+       background: white;
+       text-align: center;
+       font: italic 14px Georgia;
+     }
+
+     blockquote {
+       background: #f9f9f9;
+       border-left: 10px solid #ccc;
+       margin: 0 0 0 100px;
+       padding: .5em 10px;
+       quotes: "\201C""\201D""\2018""\2019";
+       display: inline-block;
+       white-space: pre;
+     }
+
+     blockquote:before {
+       color: #ccc;
+       content: open-quote;
+       font-size: 4em;
+       line-height: .1em;
+       margin-right: .25em;
+       vertical-align: -.4em;
+     }
+     body {
+         height: 2000px;
+     }
+  </style>
+</head>
+
+<body>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident molestias sit tempore omnis recusandae
+    esse sequi officia sapiente.</p>
+
+  <blockquote>
+    Teacher: Why are you late?
+    Student: There was a man who lost a hundred dollar bill.
+    Teacher: That's nice. Were you helping him look for it?
+    Student: No. I was standing on it.
+  </blockquote>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident molestias sit tempore omnis recusandae
+    esse sequi officia sapiente.</p>
+
+  <script>
+    /**
+     * Positions elem relative to anchor as said in position.
+     *
+     * @param {Node} anchor     Anchor element for positioning
+     * @param {string} position One of: top/right/bottom
+     * @param {Node} elem       Element to position
+     *
+     * Both elements: elem and anchor must be in the document
+     */
+    function getCoords(elem) {
+      let rect = anchor.getBoundingClientRect();
+      return {left: rect.left + pageXOffset,
+              top: rect.top + pageYOffset};
+    }
+    
+    function positionAt(anchor, position, elem) {
+      let rect = anchor.getBoundingClientRect();
+      switch(position) {
+      case 'top-out':
+        elem.style.top = (rect.top - parseFloat(elem.offsetHeight)) + 'px';
+        elem.style.left = rect.left + 'px';
+        break;
+      case 'top-in':
+        elem.style.top = rect.top + 'px';
+        elem.style.left = rect.left + 'px';
+        break;
+      case 'right-out':
+        elem.style.left = rect.left + anchor.offsetWidth + 'px';
+        elem.style.top = rect.top + 'px';
+        break;
+      case 'right-in':
+        elem.style.left = (rect.left + anchor.offsetWidth - elem.offsetWidth) + 'px';
+        elem.style.top = rect.top + 'px';
+        break;
+        
+      case 'bottom-out':
+        elem.style.left = rect.left + 'px';
+        elem.style.top = (rect.top + anchor.offsetHeight)  + 'px';
+        break;
+      case 'bottom-in':
+        elem.style.left = rect.left + 'px';
+        elem.style.top = (rect.top + anchor.offsetHeight - elem.offsetHeight)  + 'px';
+        break;
+      default:
+        throw new Error('no matching position found');
+      }        
+    }
+
+    /**
+     * Shows a note with the given html at the given position
+     * relative to the anchor element.
+     */
+    function showNote(anchor, position, html) {
+      let elem = document.createElement('div');
+      elem.className = 'note';
+      elem.id = 'note' + position;
+      elem.innerHTML = html;
+      document.body.append(elem);
+      positionAt(anchor, position, elem);
+    }
+
+    // test it
+    let blockquote = document.querySelector('blockquote');
+
+    showNote(blockquote, "top-out", "note top-out");
+    showNote(blockquote, "top-in", "note top-in");
+    showNote(blockquote, "right-out", "note at the right out");
+    showNote(blockquote, "right-in", "note at the right in");
+    showNote(blockquote, "bottom-out", "note below out");
+    showNote(blockquote, "bottom-in", "note below in");
+  </script>
+
+
+</body>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #mouse {
+      display: inline-block;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    #mouse:focus {
+      outline: 1px dashed black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>Click on the mouse and move it with arrow keys.</p>
+
+  <pre id="mouse" tabindex="1">
+ _   _
+(q\_/p)
+ /. .\
+=\_t_/=   __
+ /   \   (
+((   ))   )
+/\) (/\  /
+\  Y  /-'
+ nn^nn
+</pre>
+
+
+  <script>
+    let mouse = document.getElementById('mouse');
+    let width = mouse.clientWidth;
+    let height = mouse.clientHeight;
+
+    function moveMouse(evt) {
+      let code = evt.code.toLowerCase();
+      debugger;
+      if (!code.startsWith('arrow')) { return; }
+      let direction = code.split('arrow')[1];
+      let currentTop = !Number.isNaN(parseInt(mouse.style.top)) ? parseInt(mouse.style.top) : mouse.scrollTop;
+      let currentLeft = !Number.isNaN(parseInt(mouse.style.left)) ? parseInt(mouse.style.left) : mouse.scrollLeft;
+      switch (direction) {
+      case 'left':
+        offset = currentLeft - width;
+        offset = offset < 0 ? 0 : offset;
+        mouse.style.left = offset + 'px';
+        break;
+      case 'right':
+        mouse.style.left = currentLeft + width + 'px';
+        break;
+      case 'up':
+        offset = currentTop - height;
+        offset = offset < 0 ? 0 : offset;
+        mouse.style.top = offset + 'px';        
+        break;
+      case 'down':
+        offset = currentTop + height;
+        mouse.style.top = offset + 'px';        
+        break;
+      default:
+        throw new Error(`Incorrect direction ${direction}`);
+        break;
+      }
+    }
+    
+    mouse.addEventListener('focus', (evt) => {
+      mouse.style.position = 'absolute';
+      document.body.addEventListener('keydown', moveMouse);
+    });
+
+    mouse.addEventListener('blur', (evt) => {
+      document.body.removeEventListener('keydown', moveMouse);
+    });
+
+    
+    
+    mouse.addEventListener('click', (evt) => {
+      mouse.focus();
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <style>
+      #container {
+          position: absolute;
+          display: relative;
+      }
+      
+      #circle {
+          background-color: red;
+          height: 0px;
+          width: 0px;
+          border-radius: 50%;
+          transition-property: height width;
+          position: absolute;
+          transform: translateX(-50%) translateY(-50%);
+          transition-duration: 3s;
+          font-size: 2em;
+          
+      }
+
+      .message-ball {
+          line-height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id='show'>showCircle(150, 150,100)</div>
+    <div id='circle'></div>
+
+    <script>
+      let circle = document.getElementById('circle');
+    
+      function showCircle(cx, cy, radius, cb) {
+        let cbCalled = false;
+        circle.style.left = cx + 'px';
+        circle.style.top = cy + 'px';
+        //circle.style.marginLeft = -(cx / 2.0) + 'px';
+        //circle.style.marginTop = -(cy / 2.0) + 'px';
+        circle.style.height = 2 * radius + 'px';
+        circle.style.width = 2 * radius + 'px';
+        circle.addEventListener('transitionend', () => {
+          if (!cbCalled) {
+            cb(circle);
+            cbCalled = true;
+          }
+        })
+      }
+
+      let show = document.getElementById('show');
+      show.addEventListener('click', () => {
+        showCircle(150, 150, 100, div => {
+          div.classList.add('message-ball');
+          div.append('hello, world!');
+        });
+      });
+
+
+    </script>
+  </body>
+</html>

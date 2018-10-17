@@ -1,0 +1,25 @@
+<html>
+  <body>
+    <div id='notification' hidden>
+    </div>
+    <script>
+      function showNotification({top, right, html, className}) {
+        let notification = document.getElementById('notification');
+        notification.top = top;
+        notification.right = right;
+        notification.innerHTML = html;
+        notification.classList.toggle(className);
+        notification.hidden = false;
+        setTimeout(() => notification.hidden = true, 3000);
+      }
+      
+      // shows an element with the text "Hello" near the right-top of the window
+      showNotification({
+        top: 10, // 10px from the top of the window (by default 0px)
+        right: 10, // 10px from the right edge of the window (by default 0px)
+        html: "Hello!", // the HTML of notification
+        className: "welcome" // an additional class for the div (optional)
+      });
+    </script>
+  </body>
+</html>

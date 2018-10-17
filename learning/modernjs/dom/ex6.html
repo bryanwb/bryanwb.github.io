@@ -1,0 +1,43 @@
+<html>
+  <body>
+    <ul id='container'>
+    </ul>
+    <script>
+      let initialData = {
+        "Fish": {
+          "trout": {},
+          "salmon": {}
+        },
+        
+        "Tree": {
+          "Huge": {
+            "sequoia": {},
+            "oak": {}
+          },
+          "Flowering": {
+            "redbud": {},
+            "magnolia": {}
+          }
+        }
+      };
+      let container = document.getElementById('container');
+      function createTreeWithDescendants(container, data) {
+        for (let key of Object.keys(data)) {
+          let elem = document.createElement('li');
+          elem.textContent = key;
+
+          if (Object.keys(data[key]).length > 0) {
+            elem.textContent = `${key} [${Object.keys(data[key]).length}]`;
+            let sublist = document.createElement('ul');
+            createTreeWithDescendants(sublist, data[key]);
+            elem.append(sublist);
+          } else {
+
+          }
+          container.append(elem);
+        }
+      }
+      createTreeWithDescendants(container, initialData);
+    </script>
+  </body>
+</html>

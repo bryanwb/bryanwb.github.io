@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <style>
+      
+      #hour {
+          color: red;
+      }
+      #minute {
+          color: green;
+      }
+      #second {
+          color: blue;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="clock">
+      <span id='hour'></span>:<span id='minute'></span>:<span id='second'></span>
+    </div>
+    <script>
+      function zeroFill(num) {
+        return num.toString().length < 2 ? '0' + num.toString() : num.toString();
+      }
+      
+      function setTime() {
+        let d = new Date();
+        let hour = document.getElementById('hour');
+        let minute = document.getElementById('minute');
+        let second = document.getElementById('second');
+        hour.textContent = zeroFill(d.getHours());
+        minute.textContent = zeroFill(d.getMinutes());
+        second.textContent = zeroFill(d.getSeconds());
+      }
+
+      setInterval(setTime, 100);
+      
+    </script>
+  </body>
+</html>

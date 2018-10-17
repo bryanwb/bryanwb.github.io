@@ -49,8 +49,12 @@ This is a collection of resources I have used to learn web development.
 |[Get Styling with CSS3](https://sabe.io/classes/css/) there are many CSS tutorials out there. I don't know if this is the best one, but I found it useful | 31/08/2018    |     |
 |[Reactjs Tic-Tac-Toe tutorial and Main Concepts](https://reactjs.org/docs)                     | 30/08/2018    |          |
 |[Learn D3 Video Tutorial](https://scrimba.com/g/gd3js)                                         | 17/09/2018    |          |
+|[The Modern JavaScript Tutorial](http://javascript.info)                                         | 17/10/2018    | [yes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/modernjs) |
 |[howtographql](https://www.howtographql.com/react-apollo)                                      |               |          |
 
+Of special note here is the [Modern JavaScript Tutorial](http://javascript.info). It truly is the single best resource for front-end development that I have found. There are many books on JavaScript
+and others on CSS/HTML/Web APIs. [The Modern JavaScript Tutorial](http://javascript.info) is the only resource I have found that thoroughly covers both JavaScript the language and how to use it in the modern
+browser context to manipulate HTML5+CSS3. I started [Eloquent JavaScript](https://eloquentjavascript.net/) and worked up to chapter 16 but dropped it to work through the Modern JavaScript Tutorial. [Eloquent JavaScript](https://eloquentjavascript.net/) is an excellent book but it lacks a lot of coverage in how to interact with the browser environment.
 
 ## Fun projects/reading
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    img {
+      cursor: pointer;
+    }
+  </style>
+  <style>
+    #flyjet {
+      width: 40px;
+      /* -> 400px */
+
+      height: 24px;
+      /* -> 240px */
+      transition-property: height width;
+      transition-duration: 3s;
+      transition-timing-function: cubic-bezier(.5, 1, .5, 4);
+    }
+
+    #flyjet.growing {
+        width: 400px;
+        height: 240px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <img id="flyjet" src="https://en.js.cx/clipart/flyjet.jpg">
+
+  <script>
+    let flyjet = document.getElementById('flyjet');
+
+    function animate(evt) {
+      // flyjet.style.width = '400px';
+      // flyjet.style.height = '240px';
+      flyjet.className = 'growing';
+    }
+    
+    flyjet.addEventListener('click', animate);
+
+    let transitionended = false;
+    flyjet.addEventListener('transitionend', (evt) => {
+      if (transitionended) return;
+      transitionended = true;
+      alert('Done!');
+    });
+
+  </script>
+  
+
+</body>
+
+</html>

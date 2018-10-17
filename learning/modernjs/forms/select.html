@@ -1,0 +1,27 @@
+<html>
+  <body>
+    <select id="genres">
+      <option value="rock">Rock</option>
+      <option value="blues" selected>Blues</option>
+    </select>
+    <div id='status'></div>
+    <script>
+      let genres = document.getElementById('genres');
+      let status = document.getElementById('status');
+
+      function showStatus(){
+        let selected = Array.from(genres.options).filter(o => o.selected)[0];
+        status.textContent = `value: ${selected.value}, text: ${selected.text}`;
+      }
+
+      showStatus();
+
+      genres.addEventListener('change', showStatus);
+
+      genres.add(new Option('Classic', 'classic', true, true));
+      
+
+      
+    </script>
+  </body>
+</html>

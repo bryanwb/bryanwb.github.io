@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #field {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      border: 10px solid black;
+      background-color: #00FF00;
+      overflow: hidden;
+    }
+    #ball {
+        left: 0px;
+        top: 0px;
+        position: absolute;
+        transition-property: left top;
+        transition-duration: 1s;
+    }
+  </style>
+</head>
+
+<body style="height:2000px">
+
+  Click on a field to move the ball there.
+  <br> The ball should never leave the field.
+
+
+  <div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+  <script>
+    field.addEventListener('click', (evt) => {
+      let clientX = evt.clientX - field.clientLeft - field.offsetLeft;
+      let clientY = evt.clientY - field.clientTop - field.offsetTop;
+      
+      let maxY = field.clientHeight - ball.offsetHeight;
+      let maxX = field.clientWidth - ball.offsetWidth;
+      
+      let ballWidthOffset = ball.offsetWidth / 2.0;
+      let ballHeightOffset = ball.offsetHeight / 2.0;
+      let x = clientX - ballWidthOffset;
+      x = x < 0 ? 0 : x;
+      x = x > maxX ? maxX : x;
+
+      let y = clientY - ballHeightOffset;
+      
+      y = y < 0 ? 0 : y;
+      y = y > maxY ? maxY : y;
+      
+      ball.style.left = x + 'px';
+      ball.style.top = y + 'px';
+    });
+  </script>
+
+</body>
+</html>

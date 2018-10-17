@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <script>
+      function runOnKeys(func, ...keys) {
+        let keyLog = new Map();
+        for (let k of keys){
+          keyLog.set(k, null);
+        }
+
+        function keysPressedTogether() {
+          let timeStamp = Array.from(keyLog.values())[0];
+          return Array.from(keyLog.values()).every(v => v === timeStamp);
+        }
+        
+        
+        document.body.addEventListener('keydown', (event) => {
+          if (keyLog.has(event.code)) {
+            keyLog.set(event.code, event.timeStamp);
+            if (keysPressedTogether()) {
+              func();
+            }
+          }
+        });
+      }
+      runOnKeys(() => alert("Hello"), "KeyQ", "KeyW");
+    </script>
+  <body>
+</html>

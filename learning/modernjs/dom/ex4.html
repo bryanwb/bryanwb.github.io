@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <ul id='ol'>
+    </ul>
+    <script>
+      ol = window.document.body.firstElementChild;
+      let newLi;
+      while (true) {
+        response = prompt('List item?', '')
+        if (response === null) {
+          break;
+        }
+        newLi = document.createElement('li')
+        newLi.textContent = response;
+        ol.appendChild(newLi);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <style>
+      #container {
+          position: absolute;
+          display: relative;
+      }
+      
+      #circle {
+          background-color: red;
+          height: 0px;
+          width: 0px;
+          border-radius: 50%;
+          transition-property: height width;
+          transition-duration: 10s;
+      }
+    </style>
+  </head>
+  <body>
+    <button id='show'>showCircle(150, 150,100)</div>
+    <div id='container'>
+      <div id='circle'></div>
+    </div>
+    <script>
+      let circle = document.getElementById('circle');
+      let container = document.getElementById('container');
+      function showCircle(cx, cy, radius) {
+        container.style.left = cx + 'px';
+        container.style.top = cy + 'px';
+        circle.style.marginLeft = -(cx / 2.0) + 'px';
+        circle.style.marginTop = -(cy / 2.0) + 'px';
+        circle.style.height = 2 * radius + 'px';
+        circle.style.width = 2 * radius + 'px';
+      }
+
+      let show = document.getElementById('show');
+      show.addEventListener('click', () => {
+        showCircle(150, 150, 100);
+      });
+
+
+    </script>
+  </body>
+</html>

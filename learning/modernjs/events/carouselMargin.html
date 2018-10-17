@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+
+    #carousel {
+        width: 610px;
+        display: inline;
+    }
+    
+    .arrow {
+        padding: 0;
+      background: #ddd;
+      border-radius: 15px;
+      border: 1px solid gray;
+      font-size: 24px;
+      line-height: 24px;
+      color: #444;
+      display: inline-block;
+      vertical-align: middle;
+      /* display: flex; */
+      /* flex-direction: row; */
+    }
+
+    .arrow:focus {
+      outline: none;
+    }
+
+    .arrow:hover {
+      background: #ccc;
+      cursor: pointer;
+    }
+
+    #container {
+        display: inline-block;
+        vertical-align: middle;
+        width: 390px;
+        overflow: hidden;
+    }
+
+    ul {
+        display: inline-block;
+        vertical-align: middle;
+      height: 130px;
+      width: 9999px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0;
+      overflow: hidden;
+    }
+
+    .hidden {
+        display: none;
+    }
+    
+    ul img {
+      width: 130px;
+      height: 130px;
+      display: block; /* removes extra space near images */
+    }
+
+    ul li {
+      position: initial;
+      display: inline-block; /* removes extra space between list items */
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- create your markup and styles -->
+  <div id='carousel'>
+    <button id='leftArrow' class="arrow">⇦</button>
+    <div id='container'>
+    <ul id='faces'>
+        <li><img src="https://en.js.cx/carousel/1.png"></li>
+        <li><img src="https://en.js.cx/carousel/2.png"></li>
+        <li><img src="https://en.js.cx/carousel/3.png"></li>
+        <li><img src="https://en.js.cx/carousel/4.png"></li>
+        <li><img src="https://en.js.cx/carousel/5.png"></li>
+        <li><img src="https://en.js.cx/carousel/6.png"></li>
+        <li><img src="https://en.js.cx/carousel/7.png"></li>
+        <li><img src="https://en.js.cx/carousel/8.png"></li>
+        <li><img src="https://en.js.cx/carousel/9.png"></li>
+        <li><img src="https://en.js.cx/carousel/10.png"></li>
+    </ul>
+    </div>
+    <button id='rightArrow' class="arrow">⇨</button>
+  </div>
+
+  <script>
+    let rightArrow = document.getElementById('rightArrow');
+    let leftArrow = document.getElementById('leftArrow');
+    let faces = document.getElementById('faces');
+
+    let currentTransform = 0;
+    
+    function shiftRight() {
+      currentTransform = currentTransform - 130;
+      faces.style.transform = `translateX(${currentTransform}px)`;
+    }
+
+    function shiftLeft() {
+      currentTransform = currentTransform + 130;
+      faces.style.transform = `translateX(${currentTransform}px)`;      
+    }
+    
+    rightArrow.addEventListener('click', shiftRight);
+    leftArrow.addEventListener('click', shiftLeft);
+    
+    // label the images to visually track them, just for convenience,
+    // this code can be removed
+    // let i = 1;
+    // let faceRange = [0, 1, 2];
+
+    // let faces = Array.from(document.getElementsByTagName('li'));
+    // let facesMaxIndex = faces.length - 1;
+
+    // function drawFaces(faceRange) {
+    //   let faces = document.getElementsByTagName('li');
+    //   Array.from(faces).map((f, i) => {
+    //     if (faceRange.indexOf(i) !== -1) {
+    //       f.style.display = 'inline-block';
+    //     } else {
+    //       f.style.display = 'none';
+    //     }
+    //   });
+    // }
+      
+    // let rightArrow = document.getElementById('rightArrow');
+    // let leftArrow = document.getElementById('leftArrow');
+    
+    // function shiftRight(){
+    //   debugger;
+    //   if (faceRange[2] === facesMaxIndex) {
+    //     return;
+    //   }
+    //   faceRange = faceRange.map(r => r += 1);
+    //   drawFaces(faceRange);
+    // }
+
+    
+    // function shiftLeft(){
+    //   if (faceRange[0] === 0) {
+    //     return;
+    //   }
+    //   faceRange = faceRange.map(r => r -= 1);
+    //   drawFaces(faceRange);
+    // }
+    
+    // rightArrow.addEventListener('click', shiftRight);
+    // leftArrow.addEventListener('click', shiftLeft);
+    
+    // drawFaces(faceRange);
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<html>
+  <style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    
+    th, td {
+    padding: 5px;
+    }
+    thead td {
+        background-color: #dad4d4;
+        font-weight: bold;
+    }
+  </style>
+  <body>
+    <div>
+      <form id='dateform'>
+        Month<input type="text" id='month'>  </input>
+        Year<input type="text" id='year'>   </input>
+        <input id='button' type="submit">submit</input>
+      </form>
+    </div>
+    <table id='cal'>
+      <thead>
+        <tr>
+          <td>MO</td>
+          <td>TU</td>
+          <td>WE</td>
+          <td>TH</td>
+          <td>FR</td>
+          <td>SA</td>
+          <td>SU</td>
+        </tr>
+        <tbody id='tbody'>
+        </tbody>
+      </thead>
+    </table>
+    <script>
+      let cal = document.getElementById('tbody');
+      // let year = prompt('year?', 2018);
+      // let month = prompt('month?', 10);
+      //month = month < 10 ? '0' + month.toString() : month.toString();
+
+      function getLastDayOfMonth(year, month) {
+        let lastDay = 31;
+        let lastDate;
+        while (lastDay > 0) {
+          lastDate = new Date(`${year}-${month}-${lastDay}`);
+          if (Number.isNaN(lastDate.valueOf()) || lastDate.getMonth() !== month - 1) {
+            lastDay--;
+          } else {
+            return lastDay;
+          }
+        }
+
+        if (lastDay <= 0) {
+          throw new Error('could not find last day of year!');
+        }
+      }
+
+      function makeTd(num = null) {
+        let td = document.createElement('td');
+        if (num) {
+          td.textContent = num;
+        }
+        return td;
+      }
+
+      function getDayOfWeek(date) {
+        return date.getDay() === 0 ? 7 : date.getDay();
+      }
+      
+      function createCalendar(elem, year, month) {
+        // let date = new Date(`${year}-${month}-01`);
+        let currentDay = 1;
+        let lastDay = getLastDayOfMonth(Number(year), Number(month));
+
+        let tr = document.createElement('tr');
+        elem.innerHTML = '';
+        elem.append(tr);
+        
+        let dayCounter = 0;
+
+        while (currentDay <= lastDay) {
+          let currentDate = new Date(`${year}-${month}-${currentDay}`);
+          
+          let dayOfWeek = getDayOfWeek(currentDate);
+          if (dayOfWeek < 7 && currentDay === 1) {
+            let emptyDays = dayOfWeek;
+            // add empty days
+            for (let i = 1; i < emptyDays; i++) {
+              tr.append(makeTd());
+              dayCounter++;
+            }
+          }
+          tr.append(makeTd(currentDay));
+          dayCounter++;
+          currentDay++;
+          if (dayCounter > 6) {
+            tr = document.createElement('tr');
+            elem.append(tr);
+            dayCounter = 0;
+          }
+        }
+        
+        // add any remaining empty week days
+        if (dayCounter < 6) {
+          for (let i = dayCounter; i <= 6;  i++) {
+            debugger;
+            tr.append(makeTd());
+          }
+        }
+
+      }
+      
+      dateform = document.getElementById('dateform');
+      dateform.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let month = e.target.month.value.length < 2 ? '0' + e.target.month.value : e.target.month.value;
+        let year = e.target.year.value;
+        createCalendar(cal, year, month);
+      });
+    </script>
+  </body>
+</html>
