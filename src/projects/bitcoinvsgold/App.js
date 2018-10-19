@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import BitcoinLogo from './images/Bitcoin_logo.svg';
 import GoldBar from './images/gold-bar.png';
-import DATA from './data/GOLD-BTC.json';
 import Chart from './components/Chart';
 import Overlay from './components/Overlay';
 import ChartLegend from './components/ChartLegend';
 import ZoomButtons from './components/ZoomButtons';
+
+const dataUrl = 'https://firebasestorage.googleapis.com/v0/b/hotair-5049a.appspot.com/o/bitcoinvsgold%2Fdata.json?alt=media';
 
 // returns an offset from the end of the data
 const rangeToOffset = (range) => {
@@ -49,16 +50,12 @@ const ChartHeadline = (props) => {
   );
 };
 
-const loadSeries = (showGold, showBtc) => {
+const loadSymbols = (showGold, showBtc) => {
   let symbols = [];
-  DATA.forEach(d => {
-    d.date = new Date(d.date);
-  });
-
   showGold && symbols.push({name: 'GOLD', color: '#CFB53B', measure: '/kg'});
   showBtc && symbols.push({name: 'BTC', color: "#ff7f0e"});
   
-  return [DATA, symbols];
+  return symbols;
 };
 
 const sliceByRange = (range, data) => {
@@ -88,6 +85,7 @@ class App extends Component {
     super(props);
     const start = rangeToOffset('YTD');
     this.state = {
+      dataSet: [],
       showOverlay: true,
       show: {
         marketCap: false,
@@ -98,6 +96,24 @@ class App extends Component {
       range: {name: 'YTD', start: start, end: 0},
     };
     this.ranges = ['7d', '1m', '3m', '1y', 'YTD', 'ALL'];
+  }
+
+  async componentDidMount() {
+    /* fetch(dataUrl, {mode: "cors"})
+     *   .then(res => res.json())
+     *   .then(json => {
+     *     let data = json;
+     *     data.forEach(d => {
+     *       d.date = new Date(d.date);
+     *     });
+     *     this.setState({dataSet: data});
+     *   }); */
+    const response = await fetch(dataUrl, {mode: "cors"});
+    const data = await response.json();
+    data.forEach(d => {
+      d.date = new Date(d.date);
+    });
+    this.setState({dataSet: data});
   }
 
   toggleOverlay = () => {
@@ -151,8 +167,15 @@ class App extends Component {
     const showMarketCap = this.state.show.marketCap;
     const margin = {left: 70, right: 70, top: 20, bottom: 30};
     const range = this.state.range;
-    const [DATA, symbols] = loadSeries(this.state.show.gold, this.state.show.btc);
-    const data = sliceByRange(range, DATA);
+    const symbols = loadSymbols(this.state.show.gold, this.state.show.btc);
+
+    const data = sliceByRange(range, this.state.dataSet);
+
+    if (data.length < 1) {
+      return (
+        <div>loading . . .</div>
+      );
+    }
     
     return (
       <div style={{position: 'relative', display: 'flex'}}>
