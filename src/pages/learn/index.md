@@ -34,6 +34,18 @@ with how the material was presented.
 
 note1: I added [Computer Science from the Bottum Up](https://www.bottomupcs.com/) as it is a nice hands-on tutorial writing low-level C programs on Linux.
 
+
+## Finance
+
+
+| Resource                                                                                      | Date Finished | Exercise |
+|:---------------------------------------------------------------------------------------------:|:-------------:|:--------:|
+|[How Money Moves around the Banking System](https://gendal.me/2013/11/24/a-simple-explanation-of-how-money-moves-around-the-banking-system/) | 03/09/2018 | n/a |
+|[The Securities Settlement System Works](https://gendal.me/2014/01/05/a-simple-explanation-of-how-shares-move-around-the-securities-settlement-system/) | 18/10/2018 | |
+
+
+
+
 ## Web Development
 
 This is a collection of resources I have used to learn web development.
