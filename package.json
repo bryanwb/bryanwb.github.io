@@ -14,6 +14,7 @@
     "@vx/scale": "^0.0.165",
     "@vx/shape": "^0.0.176",
     "@vx/tooltip": "^0.0.165",
+    "axios": "^0.18.0",
     "disqus-react": "^1.0.5",
     "emotion": "^9.2.10",
     "emotion-server": "^9.2.10",
