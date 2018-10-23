@@ -74,7 +74,6 @@ const getBtcCap = () => {
   });
 };
 
-
 const goldOunceToKg = (price) => {
   return price / 0.0311035;
 };
@@ -111,8 +110,8 @@ const fetchDay = (date, btcCap) => {
   });
 };
 
-async function fetchDays(days) {
-  let prices = await Promise.all(days.map(fetchDay));
+async function fetchDays(days, btcCap) {
+  let prices = await Promise.all(days.map(d => fetchDay(d, btcCap)));
   return prices;
 }
 
@@ -150,7 +149,7 @@ async function main() {
   
   await f.save(JSON.stringify(contents), {gzip: true,
                                           contentType: 'application/json'});
-  await f.setMetadata({ cacheControl: 'max-age=31536000' });
+  await f.setMetadata({cacheControl: 'max-age=86400'});
   return newDayCount - currentDayCount;
 }
 
@@ -163,3 +162,5 @@ exports.updateTickers = async (req, res) => {
     res.status(503).send(`encountered error ${err.toString()}`);
   }
 };
+
+main();
