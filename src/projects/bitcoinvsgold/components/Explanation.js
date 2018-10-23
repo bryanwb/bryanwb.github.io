@@ -121,7 +121,7 @@ const Explanation = (props) => {
         </Li>
         <Li title="How?">
             I created this chart using the amazing <a href="https://github.com/hshoff/vx">VX</a> D3 library along with <a href="https://reactjs.org">React</a>, <a href="https://emotion.sh/">Emotion</a>, and of course Emacs. I use Google Cloud Functions to update the ticker data nightly. The biggest pain point of this entire process was finding and normalizing the historical price data for gold and Bitcoin.<br /><br />
-    This is my first non-toy React application and I would love your feedback! The source for this chart can be found in the <a href="https://github.com/bryanwb/bryanwb.github.io/tree/develop/src/projects/bitcoinvsgold">Hot Air Github repository</a>. You can contact me via Twitter <a href="https://twitter.com/bryanwb">@bryanwb</a>.
+    This is my first non-toy React application and I would love your feedback! The source for this chart can be found in the <a href="https://github.com/bryanwb/bryanwb.github.io/tree/develop/src/projects/bitcoinvsgold">Hot Air Github repository</a>. You can contact me via Twitter <a href="https://twitter.com/bryanwb">@bryanwb</a> or simply e-mail me at <a href="mailto:bryan.berry@gmail.com">bryan.berry@gmail.com</a> .
         </Li>
     </Table>
   );
