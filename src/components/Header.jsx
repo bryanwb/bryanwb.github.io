@@ -69,6 +69,7 @@ const Header = (props) => (
                   <ListLink to="/podcast/">Podcast</ListLink>
                   <ListLink to="/learn/">Learn</ListLink>
                   <ListLink to="/about/">About</ListLink>
+                  <ListLink to="/isbitcoinworthmorethangoldyet/">Charts</ListLink>
               </ul>
           </div>
 
