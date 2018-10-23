@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Helmet} from "react-helmet";
 import './App.css';
 import BitcoinLogo from './images/Bitcoin_logo.svg';
 import GoldBar from './images/gold-bar.png';
@@ -165,6 +166,12 @@ class App extends Component {
 
     return (
       <div style={{position: 'relative', display: 'flex'}}>
+          <Helmet>
+              <meta charSet="utf-8" />
+              <title>Is Bitcoin Worth More Than Gold Yet?</title>
+              <link rel="canonical" href="https://hotair.tech/isbitcoinworthmorethangoldyet/" />
+              <meta name="description" content="Is Bitcoin worth more thang gold yet?" />
+          </Helmet>
           <div className="App" style={{
             opacity: this.state.showOverlay ? 0.3 : 1.0,
             margin: 'auto',
