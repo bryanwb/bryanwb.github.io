@@ -39,7 +39,7 @@ class HotAirChart extends React.Component {
     this.unlockCrosshairs = debounce(() => this.crosshairsLock = false, 10);
   };
   
-  handleMouseOver = (xToDataAccessor, e) => {
+  handleMouseEnter = (xToDataAccessor, e) => {
     if (!this.state.isDragging) {
       // cancel an early unlock
       this.unlockCrosshairs.cancel();
@@ -67,7 +67,7 @@ class HotAirChart extends React.Component {
     }
   };
 
-  handleMouseOut = (hideTooltip) => {
+  handleMouseLeave = (hideTooltip) => {
     if (!this.crosshairsLock) {
       
       this.setState((state) => ({
@@ -166,8 +166,8 @@ class HotAirChart extends React.Component {
           y={y}
           stroke={symbol.color}
           strokeWidth={strokeWidth}
-          onMouseOver={() => e => this.handleMouseOver(xToDataAccessor, e)}
-          onMouseOut={() => () => this.handleMouseOut(hideTooltip)}
+          onMouseEnter={() => e => this.handleMouseEnter(xToDataAccessor, e)}
+          onMouseLeave={() => () => this.handleMouseLeave(hideTooltip)}
           style={{pointerEvents: 'all'}}
         />
       );
