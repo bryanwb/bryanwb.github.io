@@ -1,9 +1,9 @@
 'use strict';
 
-const {Storage} = require('@google-cloud/storage')
+const Storage = require('@google-cloud/storage');
 
-let srcFile = process.argv[1];
-let dest = process.argv[2];
+let srcFile = process.argv[2];
+let dest = process.argv[3];
 
 async function doUpload() {
   let storage = new Storage({projectId: 'hotair-5049a'})
