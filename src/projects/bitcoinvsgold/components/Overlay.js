@@ -27,14 +27,16 @@ const Container = styled('div')`
 
 const Box = styled('div')`
   position: relative;
-  width: 450;
   opacity: 1.0;
+  width: 300px;
+  height: 280px;
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
   background: rgba(255, 255, 255, 1.0);
   cursor: default;
+  margin-top: -10vh;
 `;
 
 const H1 = styled('h1')`
@@ -57,15 +59,26 @@ class Overlay extends React.Component {
   render() {
     const mostRecent = this.props.datum;
     let message;
-    const goldMarketCap = mostRecent.GOLD.close * goldKgWorldwide;
+    let btcMarketCapPrint = '. . .';
+    let goldMarketCapPrint = '. . .';
     
-    if (mostRecent.BTC.cap > goldMarketCap) {
-      message = <H1>YES</H1>
+    // if no data loaded yet, show loading
+    if (mostRecent === null) {
+      message = <div><H1 style={{fontSize: '40px'}}>. . LOADING . .</H1><p style={{margin: '0 0 20px 0'}}><br/></p></div>;
     } else {
-      if (mostRecent.BTC.cap * 50 < goldMarketCap) {
-        message = <div><H1>NO</H1><p style={{margin: '0 0 20px 0'}}>And there is a long way to go</p></div>;
+      btcMarketCapPrint = commarize(mostRecent.BTC.cap);
+      
+      const goldMarketCap = mostRecent.GOLD.close * goldKgWorldwide;
+      goldMarketCapPrint = commarize(goldMarketCap);
+      
+      if (mostRecent.BTC.cap > goldMarketCap) {
+        message = <H1>YES</H1>;
       } else {
-        message = <div><H1>NO</H1><p style={{marginTop: '0 0 20px 0'}}>But getting closer!</p></div>;
+        if (mostRecent.BTC.cap * 50 < goldMarketCap) {
+          message = <div><H1>NO</H1><p style={{margin: '0 0 20px 0'}}>And there is a long way to go</p></div>;
+        } else {
+          message = <div><H1>NO</H1><p style={{marginTop: '0 0 20px 0'}}>But getting closer!</p></div>;
+        }
       }
     }
     
@@ -77,11 +90,11 @@ class Overlay extends React.Component {
               <Reload />
               <ul style={{display: 'flex', listStyleType: 'none', margin: 0, padding: 0, alignItems: 'center', justifyContent: 'center'}}>
                   <li style={{marginBottom: 0, width: '50%', borderRight: '1px solid rgb(221, 221, 221)'}}>
-                      <span><img alt="bitcoin small logo" src={BitcoinSmallLogo} style={{height: "1em"}} />  $ {commarize(mostRecent.BTC.cap)}</span>
+                      <span><img alt="bitcoin small logo" src={BitcoinSmallLogo} style={{height: "1em"}} />  $ {btcMarketCapPrint}</span>
                       <p style={{fontSize: '0.7em', margin: '0 0 5px 0'}}>Market Cap</p>
                   </li>
                   <li style={{marginBottom: 0, width: '50%'}}>
-                      <span><img alt="gold bar" src={GoldBar} style={{height: "1.1em"}} /> $ {commarize(goldMarketCap)}</span>
+                      <span><img alt="gold bar" src={GoldBar} style={{height: "1.1em"}} /> $ {goldMarketCapPrint}</span>
                       <p style={{fontSize: '0.7em', margin: '0 0 5px 0'}}>Market Cap</p>
                   </li>
               </ul>

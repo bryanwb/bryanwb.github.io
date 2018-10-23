@@ -5,6 +5,7 @@ import GoldBar from './images/gold-bar.png';
 import Chart from './components/Chart';
 import Overlay from './components/Overlay';
 import ChartLegend from './components/ChartLegend';
+import Explanation from './components/Explanation';
 import ZoomButtons from './components/ZoomButtons';
 
 const dataUrl = 'https://firebasestorage.googleapis.com/v0/b/hotair-5049a.appspot.com/o/bitcoinvsgold%2Fdata.json?alt=media';
@@ -99,15 +100,6 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    /* fetch(dataUrl, {mode: "cors"})
-     *   .then(res => res.json())
-     *   .then(json => {
-     *     let data = json;
-     *     data.forEach(d => {
-     *       d.date = new Date(d.date);
-     *     });
-     *     this.setState({dataSet: data});
-     *   }); */
     const response = await fetch(dataUrl, {mode: "cors"});
     const data = await response.json();
     data.forEach(d => {
@@ -171,12 +163,6 @@ class App extends Component {
 
     const data = sliceByRange(range, this.state.dataSet);
 
-    if (data.length < 1) {
-      return (
-        <div>loading . . .</div>
-      );
-    }
-    
     return (
       <div style={{position: 'relative', display: 'flex'}}>
           <div className="App" style={{
@@ -187,17 +173,18 @@ class App extends Component {
             height: height,
           }}>
               <ChartHeadline />
-              <Chart
-                data={data}
-                symbols={symbols}
-                width={width}
-                height={height}
-                shiftCb={this.onShift}
-                showMarketCap={showMarketCap}
-                highlightedLine={this.state.highlightedLine}
-                margin={margin}
-                onScroll={this.onZoomScroll}
-              />
+              {this.state.dataSet.length > 0 &&
+               <Chart
+                 data={data}
+                 symbols={symbols}
+                 width={width}
+                 height={height}
+                 shiftCb={this.onShift}
+                 showMarketCap={showMarketCap}
+                 highlightedLine={this.state.highlightedLine}
+                 margin={margin}
+                 onScroll={this.onZoomScroll}
+               />}
               <div style={{display: 'flex', marginLeft: margin.left}}>
                   <ZoomButtons
                     onClick={this.onChangeZoom}
@@ -212,10 +199,15 @@ class App extends Component {
                     onMouseOut={this.onMouseOutLegend}
                   />
               </div>
+              {!this.state.showOverlay && false &&
+               <Explanation />}
           </div>
           {this.state.showOverlay &&
-          <Overlay datum={data[data.length - 1]} toggleOverlay={this.toggleOverlay} />
+           <Overlay
+             datum={data.length > 0 ? data[data.length - 1] : null}
+             toggleOverlay={this.toggleOverlay} />
           }
+          
       </div>
     );
   }
