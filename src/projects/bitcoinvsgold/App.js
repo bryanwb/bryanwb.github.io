@@ -199,7 +199,7 @@ class App extends Component {
                     onMouseOut={this.onMouseOutLegend}
                   />
               </div>
-              {!this.state.showOverlay && false &&
+              {!this.state.showOverlay &&
                <Explanation />}
           </div>
           {this.state.showOverlay &&
