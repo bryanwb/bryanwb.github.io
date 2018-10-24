@@ -9,6 +9,9 @@ const Table = styled('ul')`
 
 let liOpenStyle = css`
    div {
+     transition-property: all;
+     transition-duration: 1s;
+  
      width: 90%;
      display: inline-block;
      padding-left: 0.5em;
@@ -22,9 +25,13 @@ let liOpenStyle = css`
 `;
 
 let liClosedStyle = css`
+
      max-height: 1.4em;
      overflow: hidden;
      div {
+       transition-property: all;
+       transition-duration: 1s;
+
        width: 90%;
        display: inline-block;
        color: rgba(0, 0, 0, 0.2);
@@ -89,7 +96,7 @@ class Arrow extends React.Component {
     let arrowStyle = css`
        cursor: pointer;
        vertical-align: top;
-       transition: transform 0.2s ease 0s;
+       transition: transform 0.5s ease 0s;
        transform: ${expand ? 'rotate(90deg)' : 'rotate(0deg)'};
        width: 1.4em;
        height: 1.4em;

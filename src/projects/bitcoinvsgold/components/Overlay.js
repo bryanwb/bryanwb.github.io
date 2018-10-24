@@ -47,7 +47,7 @@ const Reload = () => {
   return (
     <div style={{maxHeight: '15px'}} onClick={() => window.location.reload()}>
         <hr />
-        <span style={{background: '#fff', marginLeft: '-20px', bottom: '2.5em', position: 'relative', justifyContent: 'center', height: '40px', width: '40px', border: '1px solid #ddd', borderRadius: '50%', display: 'flex', alignItems: 'center', left: '50%'}}>
+        <span style={{background: '#fff', marginLeft: '-20px', bottom: '2.5em', position: 'relative', justifyContent: 'center', height: '40px', width: '40px', border: '1px solid #ddd', borderRadius: '50%', display: 'flex', alignItems: 'center', left: '50%', cursor: 'pointer'}}>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path fill="#333333" d="M19 8l-4 4h3c0 3.31-2.69 6-6 6a5.87 5.87 0 0 1-2.8-.7l-1.46 1.46A7.93 7.93 0 0 0 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46A7.93 7.93 0 0 0 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
         </span>
     </div>
@@ -75,7 +75,7 @@ class Overlay extends React.Component {
         message = <H1>YES</H1>;
       } else {
         if (mostRecent.BTC.cap * 50 < goldMarketCap) {
-          message = <div><H1>NO</H1><p style={pStyle}>And there is a long way to go</p></div>;
+          message = <div><H1>NO</H1><p style={pStyle}>Check again later, site is updated daily!</p></div>;
         } else {
           message = <div><H1>NO</H1><p style={pStyle}>But getting closer!</p></div>;
         }
