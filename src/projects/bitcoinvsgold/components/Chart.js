@@ -32,23 +32,14 @@ class HotAirChart extends React.Component {
       crosshairsCoords: null,
       showCrosshairs: false,
     };
-    this.crosshairsLock = false;
   }
-
-  componentDidMount = () => {
-    this.unlockCrosshairs = debounce(() => this.crosshairsLock = false, 10);
-  };
   
   handleMouseEnter = (xToDataAccessor, e) => {
     if (!this.state.isDragging) {
-      // cancel an early unlock
-      this.unlockCrosshairs.cancel();
-      
       let coords = localPoint(e.target.ownerSVGElement, e);
 
       const datum = xToDataAccessor(coords.x);
 
-      this.crosshairsLock = true;
       this.setState((state) => ({
         isDragging: state.isDragging,
         datum: datum,
@@ -61,22 +52,17 @@ class HotAirChart extends React.Component {
         tooltipTop: coords.y,
         tooltipData: datum,
       });
-      
-      // unlock crosshairs after a delay
-      this.unlockCrosshairs();
+
     }
   };
 
   handleMouseLeave = (hideTooltip) => {
-    if (!this.crosshairsLock) {
-      
       this.setState((state) => ({
         isDragging: state.isDragging,
         datum: state.datum,
         showCrosshairs: false,
       }));
       hideTooltip();
-    }
   };
   
   handleDragStart = (e) => {
@@ -157,6 +143,7 @@ class HotAirChart extends React.Component {
       const y = (d) => d[symbol.name].close;
       const strokeWidth = highlightedLine === symbol.name ? 6 : 2
       return (
+        <React.Fragment>
         <LinePath
           key={symbol.name}
           data={data}
@@ -166,10 +153,21 @@ class HotAirChart extends React.Component {
           y={y}
           stroke={symbol.color}
           strokeWidth={strokeWidth}
+        />
+        <LinePath
+          key={symbol.name + '-capture'}
+          data={data}
+          xScale={xScale}
+          yScale={yScale}
+          x={x}
+          y={y}
+          stroke={symbol.color}
+          strokeWidth={strokeWidth * 10}
           onMouseEnter={() => e => this.handleMouseEnter(xToDataAccessor, e)}
           onMouseLeave={() => () => this.handleMouseLeave(hideTooltip)}
-          style={{pointerEvents: 'all'}}
+          style={{pointerEvents: 'all', strokeOpacity: 0}}
         />
+        </React.Fragment>
       );
     };
 
