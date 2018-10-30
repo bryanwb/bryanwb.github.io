@@ -163,4 +163,3 @@ exports.updateTickers = async (req, res) => {
   }
 };
 
-main();
