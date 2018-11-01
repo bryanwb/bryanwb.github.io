@@ -16,8 +16,7 @@ I keep notes and solutions for my self-study [here](https://github.com/bryanwb/b
 | Book                                                                                        | Status          | Exercises Completed | Date Finished | Notes |
 |---------------------------------------------------------------------------------------------|:---------------:|--------------------:|:-------------:|:-------------:|
 |[LearnYouAHaskell](http://learnyouahaskell.com/)                                             | COMPLETED       | Yes                  | 15 Feb 2017   |    |
-|~~ [Real World Haskell](http://book.realworldhaskell.org/)~~                                 | STOPPED after ch 6 |                  |               | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/realworldhaskell) |
-|[Computer Science from the Bottum Up](https://www.bottomupcs.com/)                           | COMPLETED       | Yes                 |  6 July 2018            | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/bottumupcs) |
+|[Computer Science from the Bottom Up](https://www.bottomupcs.com/)                           | COMPLETED       | Yes                 |  6 July 2018            | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/bottumupcs) |
 |[The Design of the UNIX Operating System](https://www.amazon.com/Design-UNIX-Operating-System/dp/0132017997)|   |                    |                | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/designofunix) |
 |[Nand2Tetris](http://www.nand2tetris.org/)                                                   |                 |                     |                | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nand2tetris)  |
 |[Algorithm Design Manual](https://smile.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1848000693/) |     |                     |               | |
@@ -28,9 +27,6 @@ I keep notes and solutions for my self-study [here](https://github.com/bryanwb/b
 |[Dragon Book](https://smile.amazon.com/Compilers-Principles-Techniques-Tools-2nd/dp/0321486811) |              |                     |               | |
 |[Distributed Systems](https://www.amazon.com/Distributed-Systems-Principles-Andrew-Tanenbaum/dp/153028175X) |  |                     |               | |
 
-
-note: I quit reading Real World Haskell due to increasing frustration
-with how the material was presented. 
 
 note1: I added [Computer Science from the Bottum Up](https://www.bottomupcs.com/) as it is a nice hands-on tutorial writing low-level C programs on Linux.
 
