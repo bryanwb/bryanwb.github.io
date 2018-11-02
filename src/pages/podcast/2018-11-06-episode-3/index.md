@@ -85,13 +85,15 @@ does in Germany?
 Likely won't have time for this, but could cover termsheet, prospectus, etc.
 
 
-## Timeline
+## What's next?
 
 I believe 7 ETOs are currently running. Are those ETOs finished or still ongoing? How much did they raise if you can say?
 
 Are those ETOs traded on any exchange besides the Neufund platform?
 
 All the companies currently listed on your platform appear to be based in Germany. Are you open to applicants from other countries?
+
+What is still missing on the off-chain side for ETOs?
 
 ## Conclusion
 
