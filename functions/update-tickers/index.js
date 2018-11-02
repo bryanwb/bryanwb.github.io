@@ -80,9 +80,9 @@ const goldOunceToKg = (price) => {
 
 // Currency Layer's free plan only supports fetching one historical date at a time
 const fetchDay = (date, btcCap) => {
-  const formattedDate = `${date.getUTCFullYear()}-${zerofill(date.getUTCMonth())}-${zerofill(date.getUTCDate())}`;
+  const formattedDate = `${date.getUTCFullYear()}-${zerofill(date.getUTCMonth() + 1)}-${zerofill(date.getUTCDate())}`;
   const url = `${CURRENCY_LAYER_URL}?date=${formattedDate}&currencies=BTC,XAU&access_key=${CURRENCY_LAYER_API_KEY}`;
-  
+
   return new Promise((resolve, reject) => {
     axios.get(url)
          .then(response => {
@@ -136,7 +136,7 @@ async function main() {
   } else {
     console.log(`Missing day ${missingDays[0]}`);
   }
-  
+
   let days = await fetchDays(missingDays, btcCap);
   contents = contents.concat(days);
   let newDayCount = contents.length;
