@@ -95,6 +95,8 @@ All the companies currently listed on your platform appear to be based in German
 
 What is still missing on the off-chain side for ETOs?
 
+There was a lot of talk at devcon 4 about scaling Ethereum the larger initiative of which is now called Serenit iirc. Let's presume that all those scaling initiatives fail. Does Ethereum 1.0 scale enough to meet Neufund's needs for the forseeable future?
+
 ## Conclusion
 
 How can people learn more about Neufund and are you looking for help/collaborators? How can people get in touch with you?
