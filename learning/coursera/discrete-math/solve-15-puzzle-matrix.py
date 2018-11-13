@@ -247,14 +247,6 @@ def shape_find_closest(shape, targets, puzzle):
     return sorted_distances[0][1]
     
 
-def solve_shape(shape, num, puzzle):
-    coords = puzzle.get_coords(num, puzzle)
-    target = puzzle.get_target_coords(num)
-    shape = get_shape(coords, target, puzzle)
-    closest = shape_find_closest(shape, [target], puzzle)
-    # move_to(closest, puzzle)
-
-
 def find_rotation_direction(shape, point, friends, puzzle):
     # find direction to rotate to point without stepping on friends
     puzzle_copy = puzzle.copy()
@@ -309,6 +301,10 @@ def solve(puzzle):
     elif not puzzle.is_in_place(nums):
         nums.reverse()
         align(nums, puzzle)
+
+    if puzzle.is_in_place(nums):
+        puzzle.solved.extend(nums)
+        return
 
     biggest_num = nums[0]
     target = puzzle.get_target_coords(biggest_num)
@@ -426,9 +422,8 @@ def test_solve_with_align():
     assert puzzle.is_in_place(11)
 
     solve(puzzle)
-    assert puzzle.is_in_place(12)
-
     solve(puzzle)
+    assert puzzle.is_in_place(12)
     assert puzzle.is_in_place(15)
 
 
@@ -449,6 +444,7 @@ def test_solution_simple_2():
                 5, 6, 7, 8,
                 13, 9, 11, 12,
                 10, 14, 15, 0]
+
     puzzle = _solution(position)
     
     assert puzzle.get_coords(1) == (0, 0)
