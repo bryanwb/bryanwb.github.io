@@ -1,12 +1,12 @@
 ---
 path: "/podcast/neufund-with-aga"
 date: "2018-11-06T00:00:00Z"
-title: "Episode 3 - Neufund with Agniezska Sarnecka"
+title: "Episode 3 - Neufund with Agnieszka Sarnecka"
 tags: podcast
-excerpt: "Neufund and security tokens with Agniezska Sarnecka"
+excerpt: "Neufund and security tokens with Agnieszka Sarnecka"
 ---
 
-Bryan talks with [Agniezska Sarnecka](https://twitter.com/vanilizer) about [Neufund](https://neufund.org).
+Bryan talks with [Agnieszka Sarnecka](https://twitter.com/vanilizer) about [Neufund](https://neufund.org).
 
 <iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/7653899/height/90/theme/custom/autoplay/no/autonext/no/thumbnail/yes/preload/no/no_addthis/no/direction/backward/render-playlist/no/custom-color/87A93A/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
