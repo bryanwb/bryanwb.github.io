@@ -19,4 +19,4 @@ Links
 * [Crypto legislation in Malta](https://www.ccmalta.com/news/malta-blockchain-crypto-legislation)
 * [How to Properly Standardize Security Tokens](https://blog.neufund.org/good-protocols-how-to-properly-standardize-security-tokens-95ff83c81c4a) from Neufund's CTO
 * [Neufund's Github repositories](https://github.com/neufund)
-
+* [ERC725](https://github.com/ethereum/EIPs/issues/725) and [ERC735](https://github.com/ethereum/EIPs/issues/735)
