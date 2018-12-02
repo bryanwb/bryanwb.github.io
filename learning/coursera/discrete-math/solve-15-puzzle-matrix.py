@@ -451,6 +451,32 @@ def test_solution_simple_2():
     assert puzzle.get_coords(0) == (3, 3)
     assert puzzle.is_solved()
 
+
+def test_solution_simple_3():
+    position = [5, 1, 4, 8,
+                9, 6, 3, 11,
+                10, 2, 15, 7,
+                13, 14, 12, 0]
+
+    puzzle = _solution(position)
+    
+    assert puzzle.get_coords(1) == (0, 0)
+    assert puzzle.get_coords(0) == (3, 3)
+    assert puzzle.is_solved()
+
+
+def test_solution_simple_4():
+    position = [2, 6, 3, 4,
+                9, 11, 7, 8,
+                1, 13, 14, 12,
+                5, 10, 15, 0]
+
+    puzzle = _solution(position)
+    
+    assert puzzle.get_coords(1) == (0, 0)
+    assert puzzle.get_coords(0) == (3, 3)
+    assert puzzle.is_solved()
+
     
 def test_align_complex():
     position = [1, 2, 6, 4,
