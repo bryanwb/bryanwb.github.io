@@ -74,7 +74,7 @@ export default function Podcast({ data }) {
                 <h2>ABOUT THE SHOW</h2>
                 <div style={{marginRight: '96px'}}>
                     The world of decentralized finance is complex, exciting, and changing rapidly. Join me
-                    to discuss the development of new protocols, companies, and technologies that will propel the Internet of Money. This show focuses on the finer details both financial and technical. Decentralized Finance is often referred to as <i>De.fi</i> and you can learn more about it on the <a href="https://www.reddit.com/r/defi">De.fi subreddit</a> and <a href="http://t.me/de_fi">Telegram channel</a>.
+                    to discuss the development of new protocols, companies, and technologies that will propel the Internet of Money. This show focuses on the finer details both financial and technical. Decentralized Finance is often referred to as <i>De.fi</i> and you can learn more about it on the <a href="https://www.reddit.com/r/defi">De.fi subreddit</a> and <a href="http://t.me/de_fi">Telegram channel</a>. A good list of companies, techologies, and resources in the <i>De.fi</i> space can be found <a href="https://github.com/ong/awesome-decentralized-finance">here</a>.
                     <br /><br />
                     Disclaimer: No content on this site should be taken as investment advice. I am a software engineer NOT a registered financial advisor.
                     <br /><br />
