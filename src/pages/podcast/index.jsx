@@ -3,7 +3,6 @@ import Layout from "../../layouts";
 import Link from "gatsby-link";
 import React from 'react';
 import HeadShot from './round-headshot.png';
-import { DiscussionEmbed } from 'disqus-react';
 import styled, { css } from 'react-emotion';
 import { FaRss, FaApple, FaHeadphones, FaSpotify } from 'react-icons/fa';
 
@@ -110,7 +109,6 @@ export default function Podcast({ data }) {
                           __html: post.html,
                         }}
                       />
-                      <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
                   </div>
                 );
               })}
