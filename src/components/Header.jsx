@@ -59,7 +59,7 @@ const Header = (props) => (
               }}>
                   <div style={{ fontSize: "8vh", paddingTop: "2vh" }}>Welcome to <span style={{ display: "inline-block" }}>Hot Air</span></div><br />
                   <div style={{ fontSize: "6vh" }}>What's Legit <span style={{ display: "inline-block" }}>and What to Quit</span></div><br />
-                  <div style={{ fontSize: "6vh" }}>in Decentralized Finance</div><br />
+                  <div style={{ fontSize: "6vh" }}>in Technology and Finance</div><br />
               </div>
           </Splash>
           <div style={{ textAlign: "center", bottom: 0 }}>
