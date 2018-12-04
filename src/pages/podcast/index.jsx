@@ -57,11 +57,10 @@ export default function Podcast({ data }) {
         <LinkBar>
             <ul>
                 <PodcastLink name="rss" url="http://hotair.libsyn.com/rss"><FaRss></FaRss>  RSS</PodcastLink>
-                <PodcastLink name="apple"><FaApple></FaApple>  Apple Podcasts</PodcastLink>
+                <PodcastLink name="apple" url="https://itunes.apple.com/us/podcast/welcome-to-hot-air/id1445366094"><FaApple></FaApple>  Apple Podcasts</PodcastLink>
                 <PodcastLink name="overcast"><FaHeadphones id="fa-overcast"></FaHeadphones>  Overcast</PodcastLink>
-                <PodcastLink name="pocketcasts"><FaHeadphones id="fa-pocketcasts"></FaHeadphones>  PocketCasts</PodcastLink>
-                <PodcastLink name="spotify"><FaSpotify></FaSpotify>  Spotify</PodcastLink>
-                <PodcastLink name="tunein"><FaHeadphones id="fa-headphones"></FaHeadphones>  Tunein</PodcastLink>
+                <PodcastLink name="spotify" url="https://open.spotify.com/show/4tTGunmpkaTsjhb1Ee5g4o"><FaSpotify></FaSpotify>  Spotify</PodcastLink>
+                <PodcastLink name="tunein" url="https://tunein.com/podcasts/Technology-Podcasts/Welcome-to-Hot-Air-p1179991/"><FaHeadphones id="fa-headphones"></FaHeadphones>  Tunein</PodcastLink>
             </ul>
         </LinkBar>
         <div id="about-the-show" style={{paddingBottom: '1em',
