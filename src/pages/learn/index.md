@@ -13,19 +13,24 @@ I keep notes and solutions for my self-study [here](https://github.com/bryanwb/b
 
 # Computer Science
 
-| Book                                                                                        | Status          | Exercises Completed | Date Finished | Notes |
-|---------------------------------------------------------------------------------------------|:---------------:|--------------------:|:-------------:|:-------------:|
-|[LearnYouAHaskell](http://learnyouahaskell.com/)                                             | COMPLETED       | Yes                  | 15 Feb 2017   |    |
-|[Computer Science from the Bottom Up](https://www.bottomupcs.com/)                           | COMPLETED       | Yes                 |  6 July 2018            | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/bottumupcs) |
-|[The Design of the UNIX Operating System](https://www.amazon.com/Design-UNIX-Operating-System/dp/0132017997)|   |                    |                | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/designofunix) |
-|[Nand2Tetris](http://www.nand2tetris.org/)                                                   |                 |                     |                | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nand2tetris)  |
-|[Algorithm Design Manual](https://smile.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1848000693/) |     |                     |               | |
-|[Mathematics for CS](https://courses.csail.mit.edu/6.042/spring17/mcs.pdf)                   |                 |                     |               |  |
-|[How to Solve It](https://www.amazon.co.uk/How-Solve-Mathematical-Princeton-Science/dp/069116407X/ref=dp_ob_title_bk) |  |           |               | |
-|[Operating Systems, 3 easy pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)                   |                 |                     |               | |
-|[Computer Networking, Top Down Approach](https://smile.amazon.com/Computer-Networking-Top-Down-Approach-7th/dp/0133594149/) |    |   |               | |
-|[Dragon Book](https://smile.amazon.com/Compilers-Principles-Techniques-Tools-2nd/dp/0321486811) |              |                     |               | |
-|[Distributed Systems](https://www.amazon.com/Distributed-Systems-Principles-Andrew-Tanenbaum/dp/153028175X) |  |                     |               | |
+| Book/Course                                                                                                                                                                      | Status    | Exercises Completed | Date Finished | Notes                                                                                    |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------:|--------------------:|:-------------:|:----------------------------------------------------------------------------------------:|
+| [LearnYouAHaskell](http://learnyouahaskell.com/)                                                                                                                                 | COMPLETED |                 Yes | 15 Feb 2017   |                                                                                          |
+| [Computer Science from the Bottom Up](https://www.bottomupcs.com/)                                                                                                               | COMPLETED |                 Yes | 6 July 2018   | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/bottumupcs)   |
+| [Mathematical Thinking in Computer Science](https://www.coursera.org/learn/what-is-a-proof) - [Coursera certificate](https://www.coursera.org/account/accomplishments/records/5WF57GXCZ7U3) | COMPLETED |                 Yes | 7 Nov 2018  |   |
+| [Combinatorics and Probability](https://www.coursera.org/learn/combinatorics) - [Coursera certificate](https://www.coursera.org/account/accomplishments/records/8RGFW93SGCE2)               | COMPLETED |                 Yes | 27 Nov 2018   |   |
+| [Introduction to Graph Theory](https://www.coursera.org/learn/graphs) - [Coursera certificate](https://www.coursera.org/account/accomplishments/records/MR2JEN25HA9P)                                            | COMPLETED |                 Yes | 4 Dec 2018   |   |
+| [Number Theory and Cryptography](https://www.coursera.org/learn/number-theory-cryptography) - [Coursera certificate](https://www.coursera.org/account/accomplishments/records/DB3ULKLZWF3A)  | COMPLETED |                 Yes | 14 Dec 2018   |   |
+| [Delivery Problem - Algorithms](https://www.coursera.org/learn/delivery-problem)  |  |                  |    |   |
+| [Operating Systems, 3 easy pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)                                                                                                       |           |                     |               |                                                                                          |
+| [The Design of the UNIX Operating System](https://www.amazon.com/Design-UNIX-Operating-System/dp/0132017997)                                                                     |           |                     |               | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/designofunix) |
+| [Nand2Tetris](http://www.nand2tetris.org/)                                                                                                                                       |           |                     |               | [Notes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/nand2tetris)  |
+| [Algorithm Design Manual](https://smile.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1848000693/)                                                                         |           |                     |               |                                                                                          |
+| [Mathematics for CS](https://courses.csail.mit.edu/6.042/spring17/mcs.pdf)                                                                                                       |           |                     |               |                                                                                          |
+| [How to Solve It](https://www.amazon.co.uk/How-Solve-Mathematical-Princeton-Science/dp/069116407X/ref=dp_ob_title_bk)                                                            |           |                     |               |                                                                                          |
+| [Computer Networking, Top Down Approach](https://smile.amazon.com/Computer-Networking-Top-Down-Approach-7th/dp/0133594149/)                                                      |           |                     |               |                                                                                          |
+| [Dragon Book](https://smile.amazon.com/Compilers-Principles-Techniques-Tools-2nd/dp/0321486811)                                                                                  |           |                     |               |                                                                                          |
+| [Distributed Systems](https://www.amazon.com/Distributed-Systems-Principles-Andrew-Tanenbaum/dp/153028175X)                                                                      |           |                     |               |                                                                                          |
 
 
 note1: I added [Computer Science from the Bottum Up](https://www.bottomupcs.com/) as it is a nice hands-on tutorial writing low-level C programs on Linux.
@@ -58,7 +63,6 @@ This is a collection of resources I have used to learn web development.
 |[Reactjs Tic-Tac-Toe tutorial and Main Concepts](https://reactjs.org/docs)                     | 30/08/2018    |          |
 |[Learn D3 Video Tutorial](https://scrimba.com/g/gd3js)                                         | 17/09/2018    |          |
 |[The Modern JavaScript Tutorial](http://javascript.info)                                         | 17/10/2018    | [yes](https://github.com/bryanwb/bryanwb.github.io/tree/develop/learning/modernjs) |
-|[howtographql](https://www.howtographql.com/react-apollo)                                      |               |          |
 
 Of special note here is the [Modern JavaScript Tutorial](http://javascript.info). It truly is the single best resource for front-end development that I have found. There are many books on JavaScript
 and others on CSS/HTML/Web APIs. [The Modern JavaScript Tutorial](http://javascript.info) is the only resource I have found that thoroughly covers both JavaScript the language and how to use it in the modern
