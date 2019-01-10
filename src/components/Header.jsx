@@ -57,10 +57,9 @@ const Header = (props) => (
                 textAlign: "center",
                 textShadow: "5px 5px 5px rgba(0, 0, 0, 0.7)",
               }}>
-                  <div style={{ fontSize: "8vh", paddingTop: "2vh" }}>Welcome to <span style={{ display: "inline-block" }}>Hot Air</span></div><br />
-                  <div style={{ fontSize: "6vh" }}>What's Legit <span style={{ display: "inline-block" }}>and What to Quit</span></div><br />
-                  <div style={{ fontSize: "6vh" }}>in Finance and Technology</div><br />
-              </div>
+                  <div style={{ fontSize: "8vh", paddingTop: "2vh" }}>Welcome to <span style={{ display: "inline-block" }}>Hot Air</span></div><br /><br />
+                  <div style={{ fontSize: "6vh" }}>Debugging Decentralized Finance<span style={{ display: "inline-block" }}></span></div>
+                  </div>
           </Splash>
           <div style={{ textAlign: "center", bottom: 0 }}>
               <ul style={{ listStyle: `none`, float: `none`, color: "white", fontSize: "3vh", display: `inline-block`, marginRight: `1.5rem` }}>
@@ -74,7 +73,7 @@ const Header = (props) => (
           </div>
 
       </header>
-  </div>
+              </div>
 );
 
 

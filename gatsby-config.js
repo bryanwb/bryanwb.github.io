@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     siteName: 'Hot Air',
-    description: "What's Legit and What to Quit in Technology and Finance"
+    description: "Debugging Decentralized Finance (DeFi)"
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
