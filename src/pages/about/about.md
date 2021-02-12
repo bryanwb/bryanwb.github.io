@@ -32,24 +32,13 @@ tags: about nocomments
 Hi! My name is Bryan Willson Berry and I have a lot of opinions and even more questions. This
 website is my platform to share those opinions and to provoke questions from you, the reader.
 
-I am a professional software engineer currently living in Bangkok, Thailand with
-my wife and two children. I am American by birth but by a series of accidents have
-lived the last 17 years in Tel Aviv, Hong Kong, Kathmandu, Rome, and now Bangkok. 
-
-I grew up in lovely [Whittier, CA](https://en.wikipedia.org/wiki/Whittier,_California) but left at age 18 to explore the world. I sometimes think that leaving was a mistake. Whittier is a beautiful and special place.
-
-I am fascinated by the nexus of finance and technology, particularly the
-potentially disruptive impact of blockchain technology on our global financial
-system.
-
-If you like, you can follow [me on Twitter](https://twitter.com/bryanwb), connect to [me on LinkedIn](https://www.linkedin.com/in/bryanwb), browse [my Github profile](https://github.com/bryanwb), or even [e-mail me](mailto:bryan.berry@gmail.com).
-
+I am a professional software engineer currently living in Asia with my family. I am American by birth but by a series of accidents I have now lived all over the world. I am fascinated by the nexus of finance and technology.
 
 ## Things I like
 
 ### Books and lectures
 
-I consume a lot of books, primarily in audio format. I primarily listen to non-fiction.
+I consume a lot of books, primarily in audio format. I mostly listen to non-fiction.
 
 #### General
 
@@ -64,7 +53,6 @@ I consume a lot of books, primarily in audio format. I primarily listen to non-f
 * [The History of Money](https://www.amazon.com/History-Money-Jack-Weatherford/dp/0609801724) - the best single book on the topic
 * The Ascent of Finance
 * [A Man for All Markets](http://www.edwardothorp.com/books/a-man-for-all-markets/) - Amazing and inspiring life story of mathematician and hedge fund manager Edward O. Thorp who coincidentally grew up near my hometown.
-* [The Bitcoin Standard](https://www.wiley.com/en-us/The+Bitcoin+Standard%3A+The+Decentralized+Alternative+to+Central+Banking-p-9781119473862) - I enjoyed it so much I wrote a [review](https://hotair.tech/blog/bitcoin-standard) of it. It has some very annoying flaws, but is absolutely worth your time.
 
 #### Lectures
 
@@ -75,8 +63,6 @@ I consume a lot of books, primarily in audio format. I primarily listen to non-f
 
 * [The Chinese History Podcast](https://recordedhistory.net/china-history/) - Lazlo Montgomery does an amazing job
 * [Software Engineering Daily](https://softwareengineeringdaily.com)
-* [Epicenter](https://epicenter.tv)
-* [Noded](https://noded.org) an excellent show by Bitcoin maximalists
 
 
 ## About this site

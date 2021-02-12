@@ -44,7 +44,8 @@
     "react-icons": "^3.2.2",
     "react-typography": "^0.16.13",
     "typography": "^0.16.17",
-    "typography-theme-bootstrap": "^0.16.7"
+    "typography-theme-bootstrap": "^0.16.7",
+    "typography-theme-github": "^0.16.19"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

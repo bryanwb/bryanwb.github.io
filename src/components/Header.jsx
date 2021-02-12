@@ -58,7 +58,7 @@ const Header = (props) => (
                 textShadow: "5px 5px 5px rgba(0, 0, 0, 0.7)",
               }}>
                   <div style={{ fontSize: "8vh", paddingTop: "2vh" }}>Welcome to <span style={{ display: "inline-block" }}>Hot Air</span></div><br /><br />
-                  <div style={{ fontSize: "6vh" }}>Debugging Decentralized Finance<span style={{ display: "inline-block" }}></span></div>
+                  <div style={{ fontSize: "6vh" }}><span style={{ display: "inline-block" }}></span></div>
                   </div>
           </Splash>
           <div style={{ textAlign: "center", bottom: 0 }}>
